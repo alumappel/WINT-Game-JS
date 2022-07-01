@@ -4000,7 +4000,7 @@ if (reversed == null) { reversed = false; }
 		var AllTheContent = [
 			["בחר נושא משחק"],
 			[
-				["גיאוגרפיה", "איספו בגרירה אל תוך הסל את כל התפוחים שעליהם מופיעות המדינות שנמצאות ביבשת אירופה", "text and imeg", lib.europe],
+				["גיאוגרפיה", "המדינות שנמצאות ביבשת אירופה", "text and imeg", lib.europe],
 				["הממלכה המאוחדת של בריטניה", true, "text", "no mistake"],
 				["איטליה", true, "text", "no mistake"],
 				["רוסיה", true, "text", "no mistake"],
@@ -4022,7 +4022,7 @@ if (reversed == null) { reversed = false; }
 				[lib.argentina, false, "imeg", "no mistake"]
 			],
 			[
-				["חיות", "איספו בגרירה אל תוך הסל את כל התפוחים שעליהם מופיעות חיות ממחלקת היונקים", "text", ""],
+				["חיות", "חיות ממחלקת היונקים", "text", ""],
 				["פיל", true, "text", "no mistake"],
 				["חתול", true, "text", "no mistake"],
 				["קנגרו", true, "text", "no mistake"],
@@ -4052,16 +4052,28 @@ if (reversed == null) { reversed = false; }
 		
 		
 		//מפעיל את הפונקצייה בעת טעינת פרוייקט
-		CreatopenScreen();
-		init_sound();
-		creatFrame();
+		//CreatopenScreen();
+		//init_sound();
+		//creatFrame();
 		
 		
 		////-----נסטיה עד פה הערה
-		
-		
-		
-		
+
+
+		//מפעיל ישירות למשח משחק
+		//יצירת רקע
+		var backgrund = new lib.BackgroundMain();
+		stage.addChild(backgrund);
+		backgrund.name = "MainBackground";
+		backgrund.x = 0;
+		backgrund.y = 0;
+		stage.getChildByName("MainBackground").gotoAndStop(0);
+
+		GameNum = 1;
+		CreatGameBoard();
+		forInterval = setInterval(checkNotPlayed, 1000);
+		startGameFirstTime();
+		////
 		
 		
 		
@@ -4123,7 +4135,7 @@ if (reversed == null) { reversed = false; }
 				stage.getChildByName("enterButton").removeEventListener("click", enterButtonFunc);
 				stage.getChildByName("enterButton").removeEventListener("mouseover", enterButtonHover);
 				stage.getChildByName("enterButton").removeEventListener("mouseout", enterButtonHoverDelet);
-			}
+			}			
 		}
 		
 		//פונקצייה לכפתור כניסה
@@ -4259,7 +4271,7 @@ if (reversed == null) { reversed = false; }
 			QTxt_big.textAlign = "center";
 			QTxt_big.lineHeight = 30;
 			QTxt_big.lineWidth = 600;
-			QTxt_big.text = AllTheContent[GameNum][0][1];
+			QTxt_big.text = "איספו בגרירה אל תוך הסל את כל התפוחים שעליהם "+AllTheContent[GameNum][0][1];
 			QTxt_big.name = "QTxt_big";
 		
 			//הוספת הכפתור לבמה
@@ -4399,7 +4411,7 @@ if (reversed == null) { reversed = false; }
 			QTxt.textAlign = "right";
 			QTxt.lineHeight = 30;
 			QTxt.lineWidth = 286;
-			QTxt.text = AllTheContent[GameNum][0][1];
+			QTxt.text ="איספו בגרירה אל תוך הסל את כל התפוחים שעליהם " +AllTheContent[GameNum][0][1];
 			QTxt.name = "QTxt";
 			stage.getChildByName("QTxt").alpha = 0;
 			//במידה ויש תמונה
