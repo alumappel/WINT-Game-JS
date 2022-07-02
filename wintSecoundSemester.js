@@ -3956,25 +3956,25 @@ if (reversed == null) { reversed = false; }
 		//	backgrund.x = 0;
 		//	backgrund.y = 0;
 		//	stage.getChildByName("MainBackground").gotoAndStop(1)
-		
-		
+
+
 		//var AppleDown= new lib.AppleDown();
 		//	stage.addChild(AppleDown);
 		//	AppleDown.name = "AppleDown";
 		//	AppleDown.x = 200;
 		//	AppleDown.y = 210;
-		
-		
-		
-		
+
+
+
+
 		////stage.getChildByName("AppleDown").gotoAndStop(1)
-		
-		
-		
-		
-		
-		
-		
+
+
+
+
+
+
+
 		//משתנים גלובליים
 		//משתנה ששומר את המשחק המדובר לפי המערך
 		var GameNum = 0;
@@ -3987,25 +3987,69 @@ if (reversed == null) { reversed = false; }
 		var longSound;
 		var goodSound;
 		var badSound;
-		
+
 		//משתנים למסך סיום
 		var worngAnsCount = 0;
 		var time = 0;
 		var grade = 0;
 		var worngAnsIndex = [];
-		
+
 		//משתנים של זמן
 		var startTime;
 		var endTime;
 		var overAllPauseTime = 0;
 		var forInterval;
 		var timeNotPlayed = 0;
-		
+
+		//מערך מיקומים
+		var Xplace = [];
+
+		//יצירת מערך סדר נפילה
+		var appleByFallingOrder = [];
+		//ספירת תשובות נכונות והחלטה על סיום משחק
+		var countRightAns = 0;
+		//התפוח שכרגע במשחק
+		var choosenApple = 0;
+		//החלטה על סיום משחק
+		var index = -1;
+		//האם התפוח יצא ואפשר להכניס חדש
+		var downAndOut = false;
+		//נגמר הזמן
+		var myTimeout;
+		//לבקבוק
+		//ספירת תשובות נכונות
+		var countRightAnsYet = 0;
+		//ספירת הפריים המוצג
+		var currentFrame;
+		//השהייה
+		var isPaused = false;
+		//ספירת זמן השהייה
+		var startPauseTime;
+		//מהירות משחק
+		var speedNum = 2;
+		//משתני גלילה
+		var move;
+		var myscroll;
+		//משתנה של יחסיות גלילה
+		var HacfolaY;
+		//יצירת רווחים בתוך הגלילה
+		var YspaceCountR = 0;
+		var YspaceCountW = 0;
+		// האם יש מסגרת
+		var frameOn = false;
+		//השתקה
+		var isMuted = false;
+		//תנועת חיצים
+		var directionX = "";
+
+
+
+
 		//מערך עם כל הנתונים
 		var AllTheContent = [
 			["בחר נושא משחק"],
 			[
-				["גיאוגרפיה", "איספו בגרירה אל תוך הסל את כל התפוחים שעליהם מופיעות המדינות שנמצאות ביבשת אירופה", "text and imeg", lib.europe],
+				["גיאוגרפיה", "המדינות שנמצאות ביבשת אירופה", "text and imeg", lib.europe],
 				["הממלכה המאוחדת של בריטניה", true, "text", "no mistake"],
 				["איטליה", true, "text", "no mistake"],
 				["רוסיה", true, "text", "no mistake"],
@@ -4027,7 +4071,7 @@ if (reversed == null) { reversed = false; }
 				[lib.argentina, false, "imeg", "no mistake"]
 			],
 			[
-				["חיות", "איספו בגרירה אל תוך הסל את כל התפוחים שעליהם מופיעות חיות ממחלקת היונקים", "text", ""],
+				["חיות", "חיות ממחלקת היונקים", "text", ""],
 				["פיל", true, "text", "no mistake"],
 				["חתול", true, "text", "no mistake"],
 				["קנגרו", true, "text", "no mistake"],
@@ -4050,38 +4094,62 @@ if (reversed == null) { reversed = false; }
 				["נחש", false, "text", "no mistake"]
 			]
 		]
-		
-		
+
+		//יצירת רקע וקונטיינרים
+		//יצירת רקע
+		var backgrund = new lib.BackgroundMain();
+		stage.addChild(backgrund);
+		backgrund.name = "MainBackground";
+		backgrund.x = 0;
+		backgrund.y = 0;
+		stage.getChildByName("MainBackground").gotoAndStop(0)
+
+		//קונטיינר  לכפתורים וכו
+		var cont = new createjs.Container();
+		stage.addChild(cont);
+		//קונטיינר 1
+		//תפוחים
+		var cont1 = new createjs.Container();
+		stage.addChild(cont1);
+		//קונטיינר 2
+		//בלנדר והשהיות
+		var cont2 = new createjs.Container();
+		stage.addChild(cont2);
+		//קונטיינר 3
+		//מסגרת
+		var cont3 = new createjs.Container();
+		stage.addChild(cont3);
+		var myframe = new lib.frame();
+		cont3.addChild(myframe);
+		myframe.x = 0;
+		myframe.y = 0;
+		myframe.name = "myframe";
+		frameOn = true;
+
+
 		///----נסטייה מפה הערה
-		
-		
-		
-		//מפעיל את הפונקצייה בעת טעינת פרוייקט
-		CreatopenScreen();
-		init_sound();
-		creatFrame();
-		
-		
+
+		//מפעיל את הפונקצייה בעת טעינת פרוייקט				
+		//CreatopenScreen();
+		//init_sound();
+
+
 		////-----נסטיה עד פה הערה
-		
-		
-		
-		
-		
-		
-		
-		
+
+		//מפעיל ישירות למשח משחק
+		GameNum = 1;
+		CreatGameBoard();
+		forInterval = setInterval(checkNotPlayed, 1000);
+		startGameFirstTime();
+		//////
+
+
+
+
+
 		//פונקצייה למסך בחירת נושא
 		function CreatopenScreen() {
-			//יצירת רקע
-			var backgrund = new lib.BackgroundMain();
-			stage.addChild(backgrund);
-			backgrund.name = "MainBackground";
-			backgrund.x = 0;
-			backgrund.y = 0;
-			stage.getChildByName("MainBackground").gotoAndStop(0)
-		
-		
+
 			//הוספת הקומבו לבמה
 			var combo = new lib.comboNew();
 			stage.addChild(combo);
@@ -4090,20 +4158,20 @@ if (reversed == null) { reversed = false; }
 			combo.y = 350;
 			//מאזין לשינוי ערכים בקומבו
 			$("#dom_overlay_container").on("change", "#mycb", mycb_change);
-		
+
 			//הוספת הכפתור לבמה
 			var CTA_normal = new lib.cta();
-			stage.addChild(CTA_normal);
+			cont.addChild(CTA_normal);
 			CTA_normal.x = 900;
 			CTA_normal.y = 520;
 			CTA_normal.stop();
 			CTA_normal.name = "enterButton";
-			stage.getChildByName("enterButton").gotoAndStop(2)
-		
-		
+			cont.getChildByName("enterButton").gotoAndStop(2)
+
+
 			//טקסט לכפתור
 			var startTxt = new createjs.Text();
-			stage.addChild(startTxt);
+			cont.addChild(startTxt);
 			startTxt.color = "#291A08";
 			startTxt.font = "30px Rubik Regular";
 			startTxt.x = 920;
@@ -4111,26 +4179,26 @@ if (reversed == null) { reversed = false; }
 			startTxt.textAlign = "central ";
 			startTxt.text = "כניסה למשחק";
 			startTxt.name = "Game start Txt";
-		
+
 		}
-		
+
 		//בעת שינוי ערך בקומבו
 		function mycb_change(evt) {
 			if (evt.currentTarget.value != 0) {
 				GameNum = evt.currentTarget.value;
-				stage.getChildByName("enterButton").gotoAndStop(0)
-				stage.getChildByName("enterButton").addEventListener("click", enterButtonFunc);
-				stage.getChildByName("enterButton").addEventListener("mouseover", enterButtonHover);
-				stage.getChildByName("enterButton").addEventListener("mouseout", enterButtonHoverDelet);
+				cont.getChildByName("enterButton").gotoAndStop(0)
+				cont.getChildByName("enterButton").addEventListener("click", enterButtonFunc);
+				cont.getChildByName("enterButton").addEventListener("mouseover", enterButtonHover);
+				cont.getChildByName("enterButton").addEventListener("mouseout", enterButtonHoverDelet);
 			}
 			else {
-				stage.getChildByName("enterButton").gotoAndStop(2);
-				stage.getChildByName("enterButton").removeEventListener("click", enterButtonFunc);
-				stage.getChildByName("enterButton").removeEventListener("mouseover", enterButtonHover);
-				stage.getChildByName("enterButton").removeEventListener("mouseout", enterButtonHoverDelet);
+				cont.getChildByName("enterButton").gotoAndStop(2);
+				cont.getChildByName("enterButton").removeEventListener("click", enterButtonFunc);
+				cont.getChildByName("enterButton").removeEventListener("mouseover", enterButtonHover);
+				cont.getChildByName("enterButton").removeEventListener("mouseout", enterButtonHoverDelet);
 			}
 		}
-		
+
 		//פונקצייה לכפתור כניסה
 		//פונקצייה למחיקת מסך ראשון וקריאה למסך הבא
 		function enterButtonFunc() {
@@ -4140,25 +4208,28 @@ if (reversed == null) { reversed = false; }
 			longSound = createjs.Sound.play("gameSound");
 			longSound.loop = true;
 		}
-		
+
 		//מחיקת מסך בחירת נושא
 		function ClearOpenScreen() {
-			stage.getChildByName("enterButton").removeEventListener("click", enterButtonFunc);
-			stage.getChildByName("enterButton").removeEventListener("mouseover", enterButtonHover);
-			stage.getChildByName("enterButton").removeEventListener("mouseout", enterButtonHoverDelet);
+			cont.getChildByName("enterButton").removeEventListener("click", enterButtonFunc);
+			cont.getChildByName("enterButton").removeEventListener("mouseover", enterButtonHover);
+			cont.getChildByName("enterButton").removeEventListener("mouseout", enterButtonHoverDelet);
 			stage.removeChild(stage.getChildByName("myCombo"));
-			stage.removeChild(stage.getChildByName("enterButton"));
-			stage.removeChild(stage.getChildByName("Game start Txt"));
-			creatFrame();
+			cont.removeChild(cont.getChildByName("enterButton"));
+			cont.removeChild(cont.getChildByName("Game start Txt"));
+
 		}
-		
+
+
+
+
 		//פה תתחיל פונקציית סיפור מסגרת
 		function creatBackStory() {
 			stage.getChildByName("MainBackground").gotoAndStop(1);
-		
+
 			// יצירת תיבת טקסט סיפור מסגרת
 			var storyTxt = new createjs.Text();
-			stage.addChild(storyTxt);
+			cont.addChild(storyTxt);
 			storyTxt.color = "#291A08";
 			storyTxt.font = "20px Rubik Regular";
 			storyTxt.x = 1110;
@@ -4168,11 +4239,11 @@ if (reversed == null) { reversed = false; }
 			storyTxt.lineWidth = 600;
 			storyTxt.text = "היי אני יצחק, אני מאוד אוהב לשתות מיץ תפוחים ובשביל זה אני צריך את עזרתכם\nעזרו לי בבקשה לאסוף לתוך הסל כמה שיותר תפוחים נכונים למיץ התפוחים שלי\nבקבוק המיץ שלי יתמלא ככל שתאספו יותר תפוחים, וככה אני אוכל להנות ממיץ התפוחים";
 			storyTxt.name = "storyTxt";
-		
-		
+
+
 			//תיבת טקסט נושא
 			var subTxt = new createjs.Text();
-			stage.addChild(subTxt);
+			cont.addChild(subTxt);
 			subTxt.color = "#291A08";
 			subTxt.font = "30px Rubik Regular";
 			subTxt.x = 1085;
@@ -4180,24 +4251,24 @@ if (reversed == null) { reversed = false; }
 			subTxt.textAlign = "center";
 			subTxt.text = AllTheContent[GameNum][0][0];
 			subTxt.name = "subTxt";
-		
-		
+
+
 			//הוספת הכפתור לבמה
 			var CTA_normal = new lib.cta();
-			stage.addChild(CTA_normal);
+			cont.addChild(CTA_normal);
 			CTA_normal.x = 900;
 			CTA_normal.y = 520;
 			CTA_normal.stop();
 			CTA_normal.name = "startButton";
-			stage.getChildByName("startButton").gotoAndStop(0)
-			stage.getChildByName("startButton").addEventListener("click", startButtonFunc);
-			stage.getChildByName("startButton").addEventListener("mouseover", enterButtonHover);
-			stage.getChildByName("startButton").addEventListener("mouseout", enterButtonHoverDelet);
-		
-		
+			cont.getChildByName("startButton").gotoAndStop(0)
+			cont.getChildByName("startButton").addEventListener("click", startButtonFunc);
+			cont.getChildByName("startButton").addEventListener("mouseover", enterButtonHover);
+			cont.getChildByName("startButton").addEventListener("mouseout", enterButtonHoverDelet);
+
+
 			//טקסט לכפתור
 			var startGameTxt = new createjs.Text();
-			stage.addChild(startGameTxt);
+			cont.addChild(startGameTxt);
 			startGameTxt.color = "#291A08";
 			startGameTxt.font = "30px Rubik Regular";
 			startGameTxt.x = 920;
@@ -4205,58 +4276,64 @@ if (reversed == null) { reversed = false; }
 			startGameTxt.textAlign = "central ";
 			startGameTxt.text = "מעבר למשחק";
 			startGameTxt.name = "startGameTxt";
-		
+
 			//יצירת כפתור השתק
 			var muteButton = new lib.sound_button();
-			stage.addChild(muteButton);
+			cont.addChild(muteButton);
 			muteButton.x = 70;
 			muteButton.y = 102;
 			muteButton.name = "muteButton";
-			stage.getChildByName("muteButton").addEventListener("click", MuteGame);
+			cont.getChildByName("muteButton").addEventListener("click", MuteGame);
 			if (isMuted == false) {
 				muteButton.gotoAndStop(0);
 			}
 			else {
 				muteButton.gotoAndStop(1);
 			}
-			creatFrame();
+
 		}
-		
-		
+
+
 		//פונקצייה לכפתור התחל משחק
 		function startButtonFunc() {
 			clearBackStory();
 			CreatGameBoard();
 			creatQbigScreen();
 		}
-		
-		
+
+
 		//פה תהיה פונקצייה שמוחקת את התוכן של מסך סיפור רקע מלבד תיבת נושא
 		function clearBackStory() {
-			stage.getChildByName("startButton").removeEventListener("click", startButtonFunc);
-			stage.getChildByName("startButton").removeEventListener("mouseover", enterButtonHover);
-			stage.getChildByName("startButton").removeEventListener("mouseout", enterButtonHoverDelet);
-			stage.getChildByName("muteButton").removeEventListener("click", MuteGame);
-			stage.removeChild(stage.getChildByName("storyTxt"));
-			stage.removeChild(stage.getChildByName("startButton"));
-			stage.removeChild(stage.getChildByName("startGameTxt"));
-			stage.removeChild(stage.getChildByName("muteButton"));
-			creatFrame();
+			cont.getChildByName("startButton").removeEventListener("click", startButtonFunc);
+			cont.getChildByName("startButton").removeEventListener("mouseover", enterButtonHover);
+			cont.getChildByName("startButton").removeEventListener("mouseout", enterButtonHoverDelet);
+			cont.getChildByName("muteButton").removeEventListener("click", MuteGame);
+			cont.removeChild(cont.getChildByName("storyTxt"));
+			cont.removeChild(cont.getChildByName("startButton"));
+			cont.removeChild(cont.getChildByName("startGameTxt"));
+			cont.removeChild(cont.getChildByName("muteButton"));
+
 		}
-		
-		
+
+
+
+
+
 		//יצירת מסך שאלה בגדול
 		function creatQbigScreen() {
+			//העלמת בלנדר
+			cont2.getChildByName("myBasket").alpha = 0;
+
 			//יצירת רקע
 			var small_popup = new lib.popup();
-			stage.addChild(small_popup);
+			cont.addChild(small_popup);
 			small_popup.x = 190;
 			small_popup.y = 150;
 			small_popup.name = "smallPopup";
-		
+
 			//יצירת תיבת שאלה
 			var QTxt_big = new createjs.Text();
-			stage.addChild(QTxt_big);
+			cont.addChild(QTxt_big);
 			QTxt_big.color = "#291A08";
 			QTxt_big.font = "27px Rubik Regular";
 			QTxt_big.x = 620;
@@ -4264,24 +4341,24 @@ if (reversed == null) { reversed = false; }
 			QTxt_big.textAlign = "center";
 			QTxt_big.lineHeight = 30;
 			QTxt_big.lineWidth = 600;
-			QTxt_big.text = AllTheContent[GameNum][0][1];
+			QTxt_big.text = "איספו בגרירה אל תוך הסל את כל התפוחים שעליהם " + AllTheContent[GameNum][0][1];
 			QTxt_big.name = "QTxt_big";
-		
+
 			//הוספת הכפתור לבמה
 			var secendertButton = new lib.secendryr();
-			stage.addChild(secendertButton);
+			cont.addChild(secendertButton);
 			secendertButton.x = 530;
 			secendertButton.y = 480;
 			secendertButton.stop();
 			secendertButton.name = "startButton2";
-			stage.getChildByName("startButton2").gotoAndStop(0)
-			stage.getChildByName("startButton2").addEventListener("click", startButtonFunc2);
-			stage.getChildByName("startButton2").addEventListener("mouseover", enterButtonHover);
-			stage.getChildByName("startButton2").addEventListener("mouseout", enterButtonHoverDelet);
-		
+			cont.getChildByName("startButton2").gotoAndStop(0)
+			cont.getChildByName("startButton2").addEventListener("click", startButtonFunc2);
+			cont.getChildByName("startButton2").addEventListener("mouseover", enterButtonHover);
+			cont.getChildByName("startButton2").addEventListener("mouseout", enterButtonHoverDelet);
+
 			//טקסט לכפתור
 			var startGameTxt = new createjs.Text();
-			stage.addChild(startGameTxt);
+			cont.addChild(startGameTxt);
 			startGameTxt.color = "#291A08";
 			startGameTxt.font = "30px Rubik Regular";
 			startGameTxt.x = 630;
@@ -4289,48 +4366,51 @@ if (reversed == null) { reversed = false; }
 			startGameTxt.textAlign = "center";
 			startGameTxt.text = "התחל";
 			startGameTxt.name = "startGameTxt";
-		
+
 			//במידה ויש תמונה
 			if (AllTheContent[GameNum][0][2] != "text") {
 				var Qphoto = new AllTheContent[GameNum][0][3]();
-				stage.addChild(Qphoto);
+				cont.addChild(Qphoto);
 				Qphoto.x = 565;
 				Qphoto.y = 350;
 				Qphoto.name = "Qphoto";
-				stage.getChildByName("Qphoto").addEventListener("click", scalePhoto);
-		
+				cont.getChildByName("Qphoto").addEventListener("click", scalePhoto);
+
 			}
-			creatFrame();
+
 		}
-		
+
 		//פונקצייה לכפתור התחל
 		function startButtonFunc2() {
 			forInterval = setInterval(checkNotPlayed, 1000);
 			clearQbigScreen();
 			startGameFirstTime();
 		}
-		
+
 		//העלמת מסך שאלה בגדול
-		function clearQbigScreen() {
-			stage.getChildByName("startButton2").removeEventListener("click", startButtonFunc2);
-			stage.getChildByName("startButton2").removeEventListener("mouseover", enterButtonHover);
-			stage.getChildByName("startButton2").removeEventListener("mouseout", enterButtonHoverDelet);
-			stage.removeChild(stage.getChildByName("smallPopup"));
-			stage.removeChild(stage.getChildByName("QTxt_big"));
-			stage.removeChild(stage.getChildByName("startButton2"));
-			stage.removeChild(stage.getChildByName("startGameTxt"));
-			stage.removeChild(stage.getChildByName("Qphoto"));
-			creatFrame();
+		function clearQbigScreen() {			//החזרת בלנדר
+			cont2.getChildByName("myBasket").alpha = 1;
+			cont.getChildByName("startButton2").removeEventListener("click", startButtonFunc2);
+			cont.getChildByName("startButton2").removeEventListener("mouseover", enterButtonHover);
+			cont.getChildByName("startButton2").removeEventListener("mouseout", enterButtonHoverDelet);
+			cont.removeChild(cont.getChildByName("smallPopup"));
+			cont.removeChild(cont.getChildByName("QTxt_big"));
+			cont.removeChild(cont.getChildByName("startButton2"));
+			cont.removeChild(cont.getChildByName("startGameTxt"));
+			cont.removeChild(cont.getChildByName("Qphoto"));
+			//החזרת בלנדר
+			cont2.getChildByName("myBasket").alpha = 1;
+
 		}
-		
-		
-		
-		
-		
+
+
+
+
+
+
 		//מפה מתחילים הרכיבים של המשחק עצמו
-		
-		//מערך עם מיקום רנדומלי לציר X
-		var Xplace = [];
+
+		//מערך עם מיקום רנדומלי לציר X		
 		function creatXplace() {
 			Xplace = [];
 			var stageW = parseInt(canvas.style.width);
@@ -4338,9 +4418,8 @@ if (reversed == null) { reversed = false; }
 				Xplace[i] = Math.floor((Math.random() * 700)) + 148;
 			}
 		}
-		
-		//מערך מספרי תפוחים לפי סדר נפילה
-		var appleByFallingOrder = [];
+
+		//מערך מספרי תפוחים לפי סדר נפילה		
 		function creatAppleByFallingOrder() {
 			//מערך זמני
 			var originalPlaceNum = [];
@@ -4355,9 +4434,8 @@ if (reversed == null) { reversed = false; }
 				originalPlaceNum.splice(theNum, 1);
 			}
 		}
-		
+
 		//ספירת תשובות נכונות
-		var countRightAns = 0;
 		function RightAnsCounter() {
 			for (i = 1; i < AllTheContent[GameNum].length; i++) {
 				if (AllTheContent[GameNum][i][1] == true) {
@@ -4365,26 +4443,26 @@ if (reversed == null) { reversed = false; }
 				}
 			}
 		}
-		
+
 		//פונקצייה ליצירת אלמנטים
 		function CreatGameBoard() {
 			//קריאה לפונקציות שיוצרות מערך למיקום תפוחים וסדר נפילה
 			creatXplace();
 			creatAppleByFallingOrder();
 			RightAnsCounter();
-		
+
 			stage.getChildByName("MainBackground").gotoAndStop(2);
-		
+
 			//יצירת מד תשובות
 			var ansGadge = new lib.bottle();
-			stage.addChild(ansGadge);
+			cont.addChild(ansGadge);
 			ansGadge.x = 1060.9;
 			ansGadge.y = 434.6;
 			ansGadge.name = "ansGadge";
-		
+
 			//יצירת תיבת טקסט למד תשובות
 			var ansGageTxt = new createjs.Text();
-			stage.addChild(ansGageTxt);
+			cont.addChild(ansGageTxt);
 			ansGageTxt.color = "#291A08";
 			ansGageTxt.font = "30px Rubik Regular";
 			ansGageTxt.textAlign = "center";
@@ -4392,11 +4470,11 @@ if (reversed == null) { reversed = false; }
 			ansGageTxt.y = 565;
 			ansGageTxt.text = "0/" + countRightAns;
 			ansGageTxt.name = "ansGageTxt";
-		
-		
+
+
 			//יצירת תיבת שאלה
 			var QTxt = new createjs.Text();
-			stage.addChild(QTxt);
+			cont.addChild(QTxt);
 			QTxt.color = "#291A08";
 			QTxt.font = "27px Rubik Regular";
 			QTxt.x = 1250;
@@ -4404,99 +4482,96 @@ if (reversed == null) { reversed = false; }
 			QTxt.textAlign = "right";
 			QTxt.lineHeight = 30;
 			QTxt.lineWidth = 286;
-			QTxt.text = AllTheContent[GameNum][0][1];
+			QTxt.text = "איספו בגרירה אל תוך הסל את כל התפוחים שעליהם " + AllTheContent[GameNum][0][1];
 			QTxt.name = "QTxt";
-			stage.getChildByName("QTxt").alpha = 0;
+			cont.getChildByName("QTxt").alpha = 0;
 			//במידה ויש תמונה
 			if (AllTheContent[GameNum][0][2] != "text") {
 				var QphotoSmall = new AllTheContent[GameNum][0][3]();
-				stage.addChild(QphotoSmall);
+				cont.addChild(QphotoSmall);
 				QphotoSmall.x = 1060;
 				QphotoSmall.y = 290;
 				QphotoSmall.name = "QphotoSmall";
 				QTxt.font = "20px Rubik Regular";
 				QTxt.lineHeight = 23;
-				stage.getChildByName("QphotoSmall").alpha = 0;
-				stage.getChildByName("QphotoSmall").addEventListener("click", scalePhoto);
-		
+				cont.getChildByName("QphotoSmall").alpha = 0;
+				cont.getChildByName("QphotoSmall").addEventListener("click", scalePhoto);
+
 			}
-		
+
 			//יצירת כפתור השהייה
 			var stopButton = new lib.stopBtn();
-			stage.addChild(stopButton);
+			cont.addChild(stopButton);
 			stopButton.x = 35.45;
 			stopButton.y = 246;
 			stopButton.name = "stopButton";
-			getstopButton = stage.getChildByName("stopButton");
+			getstopButton = cont.getChildByName("stopButton");
 			getstopButton.gotoAndStop(2);
-			stage.getChildByName("stopButton").addEventListener("click", pauseGame);
-		
+			cont.getChildByName("stopButton").addEventListener("click", pauseGame);
+
 			//יצירת כפתור השתק
 			var muteButton = new lib.sound_button();
-			stage.addChild(muteButton);
+			cont.addChild(muteButton);
 			muteButton.x = 70;
 			muteButton.y = 610;
 			muteButton.name = "muteButton";
-			stage.getChildByName("muteButton").addEventListener("click", MuteGame);
+			cont.getChildByName("muteButton").addEventListener("click", MuteGame);
 			if (isMuted == false) {
 				muteButton.gotoAndStop(0);
 			}
 			else {
 				muteButton.gotoAndStop(1);
 			}
-		
+
 			//יצירת פאנל שליטה במהירות
 			var speedGadge = new lib.speed();
-			stage.addChild(speedGadge);
+			cont.addChild(speedGadge);
 			speedGadge.x = 35.05;
 			speedGadge.y = 310.05;
 			speedGadge.gotoAndStop(1);
 			speedGadge.name = "speedGadge";
-		
-		
+
+
 			//יצירת חישנים למהירות
 			var detctiveY = [387.85, 367.85, 347.9];
 			for (i = 1; i <= 3; i++) {
 				var detctive = new lib.speed_detctive();
-				stage.addChild(detctive);
+				cont.addChild(detctive);
 				detctive.x = 65;
 				detctive.y = detctiveY[i - 1];
 				detctive.name = "speed_detctive" + i;
-				stage.getChildByName("speed_detctive" + i).addEventListener("click", speedControl);
-				stage.getChildByName("speed_detctive" + i).alpha = 0.1;
+				cont.getChildByName("speed_detctive" + i).addEventListener("click", speedControl);
+				cont.getChildByName("speed_detctive" + i).alpha = 0.1;
 			}
-		
+
 			//לולאה ליצירת תפוחים ותיבות טקסט
 			for (i = 1; i < AllTheContent[GameNum].length; i++) {
 				var myApple = new lib.apple();
-				stage.addChild(myApple);
-				myApple.name = "myApple" + i;
+				cont1.addChild(myApple);
+				var myAppleBound = myApple.nominalBounds;
 				myApple.x = Xplace[i];
 				myApple.y = -40;
-				myApple.addEventListener("pressmove", DragAppel);
-				myApple.addEventListener("pressup", upAppel);
-				stage.getChildByName("myApple" + i).alpha = 0;
-				stage.getChildByName("myApple" + i).mouseEnabled = "false";
-		
+				myApple.alpha = 0;
+				myApple.mouseEnabled = "false";
+				myApple.name = "myApple" + i;
+
 				if (AllTheContent[GameNum][i][2] == "imeg") {
-		
+
 					//תמונות
 					var myPhoto = new AllTheContent[GameNum][i][0]();
-					stage.addChild(myPhoto);
-					myPhoto.x = Xplace[i] + 20;
-					myPhoto.y = 10;
+					myApple.addChild(myPhoto);
+					var myPhotoBound = myPhoto.nominalBounds;
+					myPhoto.x = (myAppleBound.width / 2 - myPhotoBound.width / 2 - 5);
+					myPhoto.y = (myAppleBound.height / 2 - myPhotoBound.height / 2);
 					myPhoto.name = "myAppleTxt" + i;
-					stage.getChildByName("myAppleTxt" + i).alpha = 0;
-					stage.getChildByName("myAppleTxt" + i).addEventListener("click", scalePhoto);
-					stage.getChildByName("myAppleTxt" + i).addEventListener("pressmove", DragAppel);
-					stage.getChildByName("myAppleTxt" + i).addEventListener("pressup", upAppel);
-		
+					myPhoto.addEventListener("click", scalePhoto);
+
 				}
-		
+
 				else {
 					//תיבות טקסט
 					var myAppleTxt = new createjs.Text();
-					stage.addChild(myAppleTxt);
+					myApple.addChild(myAppleTxt);
 					myAppleTxt.text = (AllTheContent[GameNum][i][0]);
 					if (myAppleTxt.text.length > 8) {
 						myAppleTxt.color = "#291A08";
@@ -4504,8 +4579,8 @@ if (reversed == null) { reversed = false; }
 						myAppleTxt.textAlign = "right";
 						myAppleTxt.lineHeight = 22;
 						myAppleTxt.lineWidth = 50;
-						myAppleTxt.x = Xplace[i] + 110;
-						myAppleTxt.y = 5;
+						myAppleTxt.x = (myAppleBound.width / 2 + 35);
+						myAppleTxt.y = (myAppleBound.height / 2 - 40);
 					}
 					else {
 						myAppleTxt.color = "#291A08";
@@ -4513,38 +4588,37 @@ if (reversed == null) { reversed = false; }
 						myAppleTxt.textAlign = "center";
 						myAppleTxt.lineHeight = 27;
 						myAppleTxt.lineWidth = 50;
-						myAppleTxt.x = Xplace[i] + 75;
-						myAppleTxt.y = 30;
+						myAppleTxt.x = (myAppleBound.width / 2 - 5);
+						myAppleTxt.y = (myAppleBound.height / 2 - 10);
 					}
-					//myAppleTxt.w = 0;		
 					myAppleTxt.name = "myAppleTxt" + i;
-					stage.getChildByName("myAppleTxt" + i).alpha = 0;
 				}
 			}
-		
-		
+
+
 			//יצירת סל
 			var Basket = new lib.basket();
-			stage.addChild(Basket);
+			cont2.addChild(Basket);
 			Basket.x = 502.95;
 			Basket.y = 540.4;
 			Basket.name = "myBasket";
-		
+
 			//יצירת לוח משוב
 			var FreedbackKid = new lib.Freedback();
-			stage.addChild(FreedbackKid);
+			cont.addChild(FreedbackKid);
 			FreedbackKid.x = 40;
 			FreedbackKid.y = 720;
 			FreedbackKid.gotoAndStop(1);
 			FreedbackKid.name = "FreedbackKid";
-		
-			creatFrame();
+
+
+			//יצירת מאזינים לחצים
+			CreatEventLestinerMoveBasketByArrows();
+
 		}
-		
+
 		//בחירת התפוח הבא במערך האקראי
-		//החלטה על סיום משחק
-		var choosenApple = 0;
-		var index = -1;
+		//החלטה על סיום משחק	
 		function chooseApple() {
 			if (index + 1 == appleByFallingOrder.length || countRightAns == countRightAnsYet) {
 				gameOver();
@@ -4555,52 +4629,74 @@ if (reversed == null) { reversed = false; }
 				choosenApple = appleByFallingOrder[index];
 			}
 		}
-		
+
 		//פונקציה המפעילה את המשחק לראשונה
 		function startGameFirstTime() {
 			//התחלת טיימר
 			startTime = window.performance.now();
 			//החזרת שקיפות 
-			stage.getChildByName("QTxt").alpha = 1;
+			cont.getChildByName("QTxt").alpha = 1;
 			if (AllTheContent[GameNum][0][2] != "text") {
-				stage.getChildByName("QphotoSmall").alpha = 1;
+				cont.getChildByName("QphotoSmall").alpha = 1;
 			}
 			//הפלת תפוח
 			startGame();
 		}
-		
+
 		//פונקצייה המחליפה תפוח הופכת לנראה וגורמת לו לזוז
 		function startGame() {
 			chooseApple();
 			if (gameEnd == false) {
-				stage.getChildByName("myApple" + choosenApple).alpha = 1;
-				stage.getChildByName("myAppleTxt" + choosenApple).alpha = 1;
-				stage.getChildByName("myApple" + choosenApple).mouseEnabled = "true";
+				cont1.getChildByName("myApple" + choosenApple).alpha = 1;
+				cont1.getChildByName("myApple" + choosenApple).mouseEnabled = "true";
 				//גורם לדברים לזוז
 				createjs.Ticker.addEventListener("tick", mytickfunction);
 			}
 		}
-		
-		var downAndOut = false;
-		
+
+		//יצירת מאזינים לתנועת חיצים
+		function CreatEventLestinerMoveBasketByArrows() {
+			window.addEventListener("keydown", ChooseBasketDiraction);
+			window.addEventListener("keyup", StopBasketMovment);
+		}
+
+		//הכנסת תוכן שקובע את כיוון התנועה של הסל
+		function ChooseBasketDiraction(evt) {
+			if (evt.keyCode == 37) {
+				directionX = "left";
+			}
+			if (evt.keyCode == 39) {
+				directionX = "right";
+			}
+			//רווח
+			if (evt.keyCode == 32) {
+				directionX = "";
+
+			}
+		}
+
+		//עצירת תנועת הסל
+		function StopBasketMovment() {
+			directionX = "";
+		}
+
+
 		//גורם לדברים לזוז
 		function mytickfunction() {
 			//במידה וצריך לרדת עד למטה 
 			if (downAndOut == true) {
 				//מוריד
 				if (choosenApple >= 0 && index + 1 <= appleByFallingOrder.length) {
-					if (stage.getChildByName("myApple" + choosenApple).y < 700) {
-						stage.getChildByName("myApple" + choosenApple).y += speedNum;
-						stage.getChildByName("myAppleTxt" + choosenApple).y += speedNum;
+					if (cont1.getChildByName("myApple" + choosenApple).y < 700) {
+						cont1.getChildByName("myApple" + choosenApple).y += speedNum * 5;
 					}
 					//עוצר
-					if (stage.getChildByName("myApple" + choosenApple).y >= 700) {
-		
+					if (cont1.getChildByName("myApple" + choosenApple).y >= 700) {
+
 						startGame();
-						stage.getChildByName("myApple" + choosenApple).alpha = 0;
-						stage.getChildByName("myAppleTxt" + choosenApple).alpha = 0;
+						cont1.getChildByName("myApple" + choosenApple).alpha = 0;
 						createjs.Ticker.removeEventListener("tick", mytickfunction);
-		
+
 						downAndOut = false;
 						//קריאה לתפוח נוסף
 						startGame();
@@ -4608,89 +4704,77 @@ if (reversed == null) { reversed = false; }
 				}
 			}
 			//תזוזה רגילה
-			else {
-				if (choosenApple >= 0 && index + 1 <= appleByFallingOrder.length) {
-					if (stage.getChildByName("myApple" + choosenApple).y < 500) {
-						stage.getChildByName("myApple" + choosenApple).y += speedNum;
-						stage.getChildByName("myAppleTxt" + choosenApple).y += speedNum;
-					}
-					//בודק מיקום
-					if (stage.getChildByName("myApple" + choosenApple).y >= 500) {
-						AppelInBasket();
-					}
+			if (downAndOut != true) {
+				cont1.getChildByName("myApple" + choosenApple).y += speedNum * 5;
+				if (intersect(cont1.getChildByName("myApple" + choosenApple), cont2.getChildByName("myBasket"))) {
+					AppelInBasket(true);
 				}
-				//createjs.Ticker.removeEventListener("tick", mytickfunction);
-			}
-		}
-		
-		
-		
-		//גרירה של תפוח	
-		function DragAppel(evt) {
-			timeNotPlayed = 0;
-			var p = self.globalToLocal(stage.mouseX, stage.mouseY);
-			if (evt.currentTarget.name.substring(0, 10) == "myAppleTxt") {
-				var i = evt.currentTarget.name.substring(10);
-			}
-			else {
-				var i = evt.currentTarget.name.substring(7);
-			}
-			stage.getChildByName("myApple" + i).x = p.x - 80;
-			stage.getChildByName("myApple" + i).y = p.y - 80;
-			if (AllTheContent[GameNum][i][2] == "imeg") {
-				stage.getChildByName("myAppleTxt" + i).x = p.x + 20 - 80;
-				stage.getChildByName("myAppleTxt" + i).y = p.y + 50 - 80;
-			}
-			else {
-				if (stage.getChildByName("myAppleTxt" + i).text.length > 8) {
-					stage.getChildByName("myAppleTxt" + i).x = p.x + 110 - 80;
-					stage.getChildByName("myAppleTxt" + i).y = p.y + 45 - 80;
+				if (cont1.getChildByName("myApple" + choosenApple).y >= 600) {
+					AppelInBasket(false);
+					//430
 				}
-				else {
-					stage.getChildByName("myAppleTxt" + i).x = p.x + 75 - 80;
-					stage.getChildByName("myAppleTxt" + i).y = p.y + 70 - 80;
+
+				//if (choosenApple >= 0 && index + 1 <= appleByFallingOrder.length)
+				//{
+				//	if (cont1.getChildByName("myApple" + choosenApple).y < 500)
+				//	{
+				//		cont1.getChildByName("myApple" + choosenApple).y += speedNum*5;						
+				//	}
+				//	//בודק מיקום
+				//	if (cont1.getChildByName("myApple" + choosenApple).y >= 500)
+				//	{
+				//		AppelInBasket();
+				//	}
+				//}
+				////createjs.Ticker.removeEventListener("tick", mytickfunction);
+			}
+
+
+			//תנועה של הסל
+			if (directionX != "") {
+				//מונע השהייה כפויה
+				timeNotPlayed = 0;
+				if (directionX == "left" && cont2.getChildByName("myBasket").x>0+30) {
+					cont2.getChildByName("myBasket").x -= speedNum * 7;
+				}
+				if (directionX == "right" && cont2.getChildByName("myBasket").x<900) {
+					cont2.getChildByName("myBasket").x += speedNum * 7;
 				}
 			}
 		}
-		
-		//שחרור גרירה
-		function upAppel() {
-			if (stage.getChildByName("myApple" + choosenApple).y > 500) {
-				AppelInBasket();
-			}
-		}
-		
+
+
+
 		//בדיקת חפיפה
 		//וחיווים
-		var myTimeout;
-		var countRightAnsYet = 0;
-		function AppelInBasket() {
+		function AppelInBasket(intrecectTrue) {
 			//הסרת טיקר
 			createjs.Ticker.removeEventListener("tick", mytickfunction);
+			console.log("ticker remove");
 			//זיהוי פגיעה
-			if (intersect(stage.getChildByName("myApple" + choosenApple), stage.getChildByName("myBasket"))) {
+			if (intrecectTrue == true) {
 				//אם פגע ונכון
 				if (AllTheContent[GameNum][choosenApple][1] == true) {
 					//צבע תפוח
-					stage.getChildByName("myApple" + choosenApple).gotoAndStop(1);
+					cont1.getChildByName("myApple" + choosenApple).gotoAndStop(1);
 					//ספירת תשובה נכונה
 					countRightAnsYet++;
 					//שינוי מד תשובות
-					stage.getChildByName("ansGageTxt").text = (countRightAnsYet + "/" + countRightAns);
+					cont.getChildByName("ansGageTxt").text = (countRightAnsYet + "/" + countRightAns);
 					fillButtel();
 					//סאונד
 					if (isMuted == false) {
 						goodSound = createjs.Sound.play("rightSound");
 					}
 					//אנימצייה
-					stage.getChildByName("FreedbackKid").gotoAndPlay(1);
+					cont.getChildByName("FreedbackKid").gotoAndPlay(1);
 					//המתנה וקריאה לפונקציה שמעלימה וומשיכה 
 					myTimeout = setTimeout(continuedRight, 2000);
 				}
 				//אם פגע ושגוי
 				else {
 					//שינוי צבע תפוח
-					stage.getChildByName("myApple" + choosenApple).gotoAndStop(2);
+					cont1.getChildByName("myApple" + choosenApple).gotoAndStop(2);
 					//מחזיר את התפוח למערך נפילה
 					appleByFallingOrder.push(choosenApple);
 					//מסמן במערך המקורי את התפוח כשגוי
@@ -4700,7 +4784,7 @@ if (reversed == null) { reversed = false; }
 						badSound = createjs.Sound.play("worngSound");
 					}
 					//אנימצייה
-					stage.getChildByName("FreedbackKid").gotoAndPlay(56);
+					cont.getChildByName("FreedbackKid").gotoAndPlay(56);
 					//המתנה והעלמת תפוח
 					myTimeout = setTimeout(continuedWorng, 2000);
 				}
@@ -4710,7 +4794,7 @@ if (reversed == null) { reversed = false; }
 				//לא פגע ושגוי
 				if (AllTheContent[GameNum][choosenApple][1] == true) {
 					//שינוי צבע תפוח
-					stage.getChildByName("myApple" + choosenApple).gotoAndStop(2);
+					cont1.getChildByName("myApple" + choosenApple).gotoAndStop(2);
 					//החזרת תפוח למערך נפילה
 					appleByFallingOrder.push(choosenApple);
 					//שינוי במערך המקורי לשגיאה
@@ -4720,88 +4804,66 @@ if (reversed == null) { reversed = false; }
 						badSound = createjs.Sound.play("worngSound");
 					}
 					//אנימצייה
-					stage.getChildByName("FreedbackKid").gotoAndPlay(56);
+					cont.getChildByName("FreedbackKid").gotoAndPlay(56);
 					//המתנה והעלמת תפוח
 					myTimeout = setTimeout(continuedWorng, 2000);
 				}
 				//לא פגע ונכון
 				else {
-					//מוריד שקיפות ומבטל לחיצה
-					stage.getChildByName("myApple" + choosenApple).removeEventListener("pressmove", DragAppel);
-					stage.getChildByName("myApple" + choosenApple).removeEventListener("pressup", upAppel);
+					//מוריד שקיפות ומבטל לחיצה					
 					downAndOut = true;
 					createjs.Ticker.addEventListener("tick", mytickfunction);
+					console.log("ticker add");
 				}
 			}
 		}
-		
+
 		//ממשיך את המשחק אחרי המתנה לתפוח נכון
 		function continuedRight() {
 			clearTimeout(myTimeout);
-			//מעלים וקורא לתפוח חדש
-			stage.getChildByName("myApple" + choosenApple).removeEventListener("pressmove", DragAppel);
-			stage.getChildByName("myApple" + choosenApple).removeEventListener("pressup", upAppel);
-			stage.getChildByName("myApple" + choosenApple).alpha = 0;
-			stage.getChildByName("myAppleTxt" + choosenApple).alpha = 0;
+			//מעלים וקורא לתפוח חדש			
+			cont1.getChildByName("myApple" + choosenApple).alpha = 0;
 			startGame();
 		}
-		
+
 		//ממשיך את המשחק ארי המתנה לתפוח שגוי
 		function continuedWorng() {
 			clearTimeout(myTimeout);
 			//מחזיר למעלה
-			stage.getChildByName("myApple" + choosenApple).y = -40;
-			if (AllTheContent[GameNum][choosenApple][2] == "imeg") {
-				//לתמונה
-				stage.getChildByName("myAppleTxt" + choosenApple).y = 10;
-			}
-			else {
-				if (stage.getChildByName("myAppleTxt" + choosenApple).text.length > 8) {
-					//לטקסט ארוך
-					stage.getChildByName("myAppleTxt" + choosenApple).y = 5;
-				}
-				else {
-					//לטקסט קצר
-					stage.getChildByName("myAppleTxt" + choosenApple).y = 30;
-				}
-			}
+			cont1.getChildByName("myApple" + choosenApple).y = -40;
 			//מחזיר צבע תפוח למקורי
-			stage.getChildByName("myApple" + choosenApple).gotoAndStop(0);
+			cont1.getChildByName("myApple" + choosenApple).gotoAndStop(0);
 			//מעלים
-			stage.getChildByName("myApple" + choosenApple).alpha = 0;
-			stage.getChildByName("myAppleTxt" + choosenApple).alpha = 0;
+			cont1.getChildByName("myApple" + choosenApple).alpha = 0;
 			//קורא לעוד תפוח
 			startGame();
 		}
-		
-		//פונקצייה ששולטת בכמה הבקבוק מלא
-		var currentFrame;
+
+		//פונקצייה ששולטת בכמה הבקבוק מלא		
 		function fillButtel() {
 			switch (countRightAnsYet) {
 				case countRightAns:
-					stage.getChildByName("ansGadge").gotoAndStop(9);
+					cont.getChildByName("ansGadge").gotoAndStop(9);
 					currentFrame = 9;
 					break;
 				case 0:
-					stage.getChildByName("ansGadge").gotoAndStop(0);
+					cont.getChildByName("ansGadge").gotoAndStop(0);
 					currentFrame = 0;
 					break;
 				case 1:
-					stage.getChildByName("ansGadge").gotoAndStop(1);
+					cont.getChildByName("ansGadge").gotoAndStop(1);
 					currentFrame = 1;
 					break;
 				default:
 					var buttelFrameWarth = 10 / countRightAns;
 					var theFrame = Math.floor(countRightAnsYet * buttelFrameWarth);
 					if (theFrame - 1 >= currentFrame) {
-						stage.getChildByName("ansGadge").gotoAndStop(theFrame - 1);
+						cont.getChildByName("ansGadge").gotoAndStop(theFrame - 1);
 					}
 			}
 		}
-		
-		//השהייה
-		var isPaused = false;
-		var startPauseTime;
+
+		//השהייה		
 		function pauseGame() {
 			//עוצר
 			if (isPaused == false) {
@@ -4812,24 +4874,12 @@ if (reversed == null) { reversed = false; }
 				var theAppel = choosenApple;
 				choosenApple = -1;
 				appleByFallingOrder.push(theAppel);
-		
-				stage.getChildByName("myApple" + theAppel).y = 0;
-				if (AllTheContent[GameNum][theAppel][2] == "imeg") {
-					stage.getChildByName("myAppleTxt" + theAppel).y = 50;
-				}
-				else {
-					if (stage.getChildByName("myAppleTxt" + theAppel).text.length > 8) {
-						stage.getChildByName("myAppleTxt" + theAppel).y = 5;
-					}
-					else {
-						stage.getChildByName("myAppleTxt" + theAppel).y = 30;
-					}
-				}
-				stage.getChildByName("myAppleTxt" + theAppel).alpha = 0;
-				stage.getChildByName("myApple" + theAppel).alpha = 0;
-				stage.getChildByName("myApple" + theAppel).mouseEnabled = "false";
+
+				cont1.getChildByName("myApple" + theAppel).y = 0;
+				cont1.getChildByName("myApple" + theAppel).alpha = 0;
+				cont1.getChildByName("myApple" + theAppel).mouseEnabled = "false";
 			}
-		
+
 			//מחזיר
 			else {
 				clearPauseWindow();
@@ -4840,20 +4890,20 @@ if (reversed == null) { reversed = false; }
 				startGame();
 			}
 		}
-		
+
 		//חלונית השהייה
 		function creatPauseWindow() {
-			creatFrame();
+
 			//חלונית
 			var wide_popup = new lib.widePopup();
-			stage.addChild(wide_popup);
+			cont2.addChild(wide_popup);
 			wide_popup.x = 50;
 			wide_popup.y = 150;
 			wide_popup.name = "wide_popup";
-		
+
 			//טקסט
 			var pauseTxt = new createjs.Text();
-			stage.addChild(pauseTxt);
+			cont2.addChild(pauseTxt);
 			pauseTxt.color = "#291A08";
 			pauseTxt.font = "27px Rubik Regular";
 			pauseTxt.x = 620;
@@ -4863,22 +4913,22 @@ if (reversed == null) { reversed = false; }
 			pauseTxt.lineWidth = 600;
 			pauseTxt.text = "המשחק בהשהייה, להמשך משחק לחצו על הכפתור";
 			pauseTxt.name = "pauseTxt";
-		
+
 			//הוספת הכפתור לבמה
 			var pausesecendertButton = new lib.secendryr();
-			stage.addChild(pausesecendertButton);
+			cont2.addChild(pausesecendertButton);
 			pausesecendertButton.x = 530;
 			pausesecendertButton.y = 400;
 			pausesecendertButton.stop();
 			pausesecendertButton.name = "pausesecendertButton";
-			stage.getChildByName("pausesecendertButton").gotoAndStop(0)
-			stage.getChildByName("pausesecendertButton").addEventListener("click", pauseGame);
-			stage.getChildByName("pausesecendertButton").addEventListener("mouseover", enterButtonHover);
-			stage.getChildByName("pausesecendertButton").addEventListener("mouseout", enterButtonHoverDelet);
-		
+			cont2.getChildByName("pausesecendertButton").gotoAndStop(0)
+			cont2.getChildByName("pausesecendertButton").addEventListener("click", pauseGame);
+			cont2.getChildByName("pausesecendertButton").addEventListener("mouseover", enterButtonHover1);
+			cont2.getChildByName("pausesecendertButton").addEventListener("mouseout", enterButtonHoverDelet1);
+
 			//טקסט לכפתור
 			var pauseButtonTxt = new createjs.Text();
-			stage.addChild(pauseButtonTxt);
+			cont2.addChild(pauseButtonTxt);
 			pauseButtonTxt.color = "#291A08";
 			pauseButtonTxt.font = "30px Rubik Regular";
 			pauseButtonTxt.x = 630;
@@ -4886,49 +4936,55 @@ if (reversed == null) { reversed = false; }
 			pauseButtonTxt.textAlign = "center";
 			pauseButtonTxt.text = "המשך משחק";
 			pauseButtonTxt.name = "startGameTxt";
-		
-			creatFrame();
+
+
 		}
-		
+
 		//מחיקת חלונית השהייה
 		function clearPauseWindow() {
-			stage.getChildByName("pausesecendertButton").removeEventListener("click", pauseGame);
-			stage.getChildByName("pausesecendertButton").removeEventListener("mouseover", enterButtonHover);
-			stage.getChildByName("pausesecendertButton").removeEventListener("mouseout", enterButtonHoverDelet);
-			stage.removeChild(stage.getChildByName("wide_popup"));
-			stage.removeChild(stage.getChildByName("pauseTxt"));
-			stage.removeChild(stage.getChildByName("pausesecendertButton"));
-			stage.removeChild(stage.getChildByName("startGameTxt"));
+			cont2.getChildByName("pausesecendertButton").removeEventListener("click", pauseGame);
+			cont2.getChildByName("pausesecendertButton").removeEventListener("mouseover", enterButtonHover1);
+			cont2.getChildByName("pausesecendertButton").removeEventListener("mouseout", enterButtonHoverDelet1);
+			cont2.removeChild(cont2.getChildByName("wide_popup"));
+			cont2.removeChild(cont2.getChildByName("pauseTxt"));
+			cont2.removeChild(cont2.getChildByName("pausesecendertButton"));
+			cont2.removeChild(cont2.getChildByName("startGameTxt"));
 		}
-		
+
 		//השהייה כפוייה
 		function checkNotPlayed() {
 			timeNotPlayed++;
 			if (timeNotPlayed >= 20 && isPaused == false) {
 				pauseGame();
-		
 			}
 		}
-		
-		//מהירות
-		var speedNum = 2;
+
+		//מהירות	
 		function speedControl(evt) {
 			if (evt.currentTarget.name.substring(14) == 3) {
 				speedNum = 3;
-				stage.getChildByName("speedGadge").gotoAndStop(2);
+				cont.getChildByName("speedGadge").gotoAndStop(2);
 			}
 			if (evt.currentTarget.name.substring(14) == 2) {
 				speedNum = 2;
-				stage.getChildByName("speedGadge").gotoAndStop(1);
+				cont.getChildByName("speedGadge").gotoAndStop(1);
 			}
 			if (evt.currentTarget.name.substring(14) == 1) {
 				speedNum = 1;
-				stage.getChildByName("speedGadge").gotoAndStop(0);
+				cont.getChildByName("speedGadge").gotoAndStop(0);
 			}
 		}
-		
+
 		///====מפה נגמר המשחק
-		
+
+
+
+
+
+
+
+
+
 		//סיום משחק
 		function gameOver() {
 			gameEnd = true;
@@ -4938,7 +4994,7 @@ if (reversed == null) { reversed = false; }
 			time = (endTime - startTime - overAllPauseTime) / 60000;
 			//קיצור הזמן לשני מספרים אחרי הנקודה
 			time = time.toFixed(2);
-		
+
 			//הכנסת תוכן למערך של אינדקס שאלות שטעו בהן
 			//ספירת שגיאות
 			for (i = 1; i < (AllTheContent[GameNum].length); i++) {
@@ -4947,33 +5003,30 @@ if (reversed == null) { reversed = false; }
 					worngAnsCount++;
 				}
 			}
-		
+
 			//חישוב ציון
 			grade = 100 * (1 - (worngAnsCount / (AllTheContent[GameNum].length - 1)))
 			grade = grade.toFixed(0);
-		
+
 			//קריאה לניקוי מסך
 			clearGameBoard();
 			//קריאה ליצירת חלון סוף משחק
 			CreateSum();
-			creatFrame();
+
 		}
-		
-		
+
+
 		function clearGameBoard() {
 			//מחיקת הכל
-			stage.removeAllChildren();
-			//יצירת רקע מחדש
-			var backgrund = new lib.BackgroundMain();
-			stage.addChild(backgrund);
-			backgrund.name = "MainBackground";
-			backgrund.x = 0;
-			backgrund.y = 0;
+			cont.removeAllChildren();
+			cont1.removeAllChildren();
+			cont2.removeAllChildren();
+			//שינוי רקע		
 			stage.getChildByName("MainBackground").gotoAndStop(3)
-		
+
 			//יצירת שלט נושא
 			var subTxt = new createjs.Text();
-			stage.addChild(subTxt);
+			cont.addChild(subTxt);
 			subTxt.color = "#291A08";
 			subTxt.font = "30px Rubik Regular";
 			subTxt.x = 1085;
@@ -4982,52 +5035,52 @@ if (reversed == null) { reversed = false; }
 			subTxt.text = AllTheContent[GameNum][0][0];
 			subTxt.name = "subTxt";
 		}
-		
-		
+
+
 		//יצירת מסך סיום עם האובייקטים שעליו
 		function CreateSum() {
 			clearInterval(forInterval);
 			//יקריאה ליצירת גלילה
 			theScroll();
-		
+
 			//יצירת כפתור השתק
 			var muteButton = new lib.sound_button();
-			stage.addChild(muteButton);
+			cont.addChild(muteButton);
 			muteButton.x = 55;
 			muteButton.y = 100;
 			muteButton.name = "muteButton";
-			stage.getChildByName("muteButton").addEventListener("click", MuteGame);
+			cont.getChildByName("muteButton").addEventListener("click", MuteGame);
 			if (isMuted == false) {
 				muteButton.gotoAndStop(0);
 			}
 			else {
 				muteButton.gotoAndStop(1);
 			}
-		
+
 			//רקע לשאלה
 			var buble = new lib.endQSpace();
-			stage.addChild(buble);
+			cont.addChild(buble);
 			buble.x = 100;
 			buble.y = 80;
 			buble.name = "buble";
-		
+
 			//שלטים
 			var myrightsign = new lib.rightsign();
-			stage.addChild(myrightsign);
+			cont.addChild(myrightsign);
 			myrightsign.x = 140;
 			myrightsign.y = 290;
 			myrightsign.name = "myrightsign";
-		
+
 			var myworngsign = new lib.worngsign();
-			stage.addChild(myworngsign);
+			cont.addChild(myworngsign);
 			myworngsign.x = 480 + (140 - 70);
 			myworngsign.y = 290;
 			myworngsign.name = "myworngsign";
-		
+
 			//שאלה
 			//יצירת תיבת שאלה
 			var QTxt = new createjs.Text();
-			stage.addChild(QTxt);
+			cont.addChild(QTxt);
 			QTxt.color = "#291A08";
 			QTxt.font = "27px Rubik Regular";
 			QTxt.x = 770;
@@ -5040,21 +5093,21 @@ if (reversed == null) { reversed = false; }
 			//במידה ויש תמונה
 			if (AllTheContent[GameNum][0][2] != "text") {
 				QTxt.lineWidth = 500;
-		
+
 				var QphotoSmall = new AllTheContent[GameNum][0][3]();
-				stage.addChild(QphotoSmall);
+				cont.addChild(QphotoSmall);
 				QphotoSmall.x = 160;
 				QphotoSmall.y = 120;
 				QphotoSmall.name = "QphotoSmall";
 				QTxt.font = "20px Rubik Regular";
 				QTxt.lineHeight = 23;
-				stage.getChildByName("QphotoSmall").addEventListener("click", scalePhoto);
-		
+				cont.getChildByName("QphotoSmall").addEventListener("click", scalePhoto);
+
 			}
-		
+
 			//תיבת טקסט ציון
 			var varTxt = new createjs.Text();
-			stage.addChild(varTxt);
+			cont.addChild(varTxt);
 			varTxt.color = "#291A08";
 			varTxt.font = "25px Rubik Regular";
 			varTxt.x = 1110;
@@ -5062,10 +5115,10 @@ if (reversed == null) { reversed = false; }
 			varTxt.textAlign = "right";
 			varTxt.text = ("ציון: " + grade);
 			varTxt.name = "gradeTxt";
-		
+
 			//תיבת טקסט שגיאות
 			var varTxt = new createjs.Text();
-			stage.addChild(varTxt);
+			cont.addChild(varTxt);
 			varTxt.color = "#291A08";
 			varTxt.font = "25px Rubik Regular";
 			varTxt.x = 1168;
@@ -5073,10 +5126,10 @@ if (reversed == null) { reversed = false; }
 			varTxt.textAlign = "right";
 			varTxt.text = ("מספר שגיאות: " + worngAnsCount);
 			varTxt.name = "wrongCountTxt";
-		
+
 			//תיבת טקסט זמן
 			var varTxt = new createjs.Text();
-			stage.addChild(varTxt);
+			cont.addChild(varTxt);
 			varTxt.color = "#291A08";
 			varTxt.font = "25px Rubik Regular";
 			varTxt.x = 1120;
@@ -5084,22 +5137,22 @@ if (reversed == null) { reversed = false; }
 			varTxt.textAlign = "right";
 			varTxt.text = ("זמן: " + time);
 			varTxt.name = "timeTxt";
-		
+
 			//כפתור למסך הראשי
 			var secendertButton = new lib.secendryr();
-			stage.addChild(secendertButton);
+			cont.addChild(secendertButton);
 			secendertButton.x = 975;
 			secendertButton.y = 500;
 			secendertButton.stop();
 			secendertButton.name = "startagain";
-			stage.getChildByName("startagain").gotoAndStop(0)
-			stage.getChildByName("startagain").addEventListener("click", restart);
-			stage.getChildByName("startagain").addEventListener("mouseover", enterButtonHover);
-			stage.getChildByName("startagain").addEventListener("mouseout", enterButtonHoverDelet);
-		
+			cont.getChildByName("startagain").gotoAndStop(0)
+			cont.getChildByName("startagain").addEventListener("click", restart);
+			cont.getChildByName("startagain").addEventListener("mouseover", enterButtonHover);
+			cont.getChildByName("startagain").addEventListener("mouseout", enterButtonHoverDelet);
+
 			//טקסט לכפתור
 			var varTxt = new createjs.Text();
-			stage.addChild(varTxt);
+			cont.addChild(varTxt);
 			varTxt.color = "#291A08";
 			varTxt.font = "25px Rubik Regular";
 			varTxt.x = 1125;
@@ -5107,22 +5160,22 @@ if (reversed == null) { reversed = false; }
 			varTxt.textAlign = "right";
 			varTxt.text = "שחק שוב";
 			varTxt.name = "startagainTxt";
-		
+
 			//כפתור שחק שוב
 			var secendertButton = new lib.secendryr();
-			stage.addChild(secendertButton);
+			cont.addChild(secendertButton);
 			secendertButton.x = 975;
 			secendertButton.y = 570;
 			secendertButton.stop();
 			secendertButton.name = "toTheStart";
-			stage.getChildByName("toTheStart").gotoAndStop(0)
-			stage.getChildByName("toTheStart").addEventListener("click", toTheStart);
-			stage.getChildByName("toTheStart").addEventListener("mouseover", enterButtonHover);
-			stage.getChildByName("toTheStart").addEventListener("mouseout", enterButtonHoverDelet);
-		
+			cont.getChildByName("toTheStart").gotoAndStop(0)
+			cont.getChildByName("toTheStart").addEventListener("click", toTheStart);
+			cont.getChildByName("toTheStart").addEventListener("mouseover", enterButtonHover);
+			cont.getChildByName("toTheStart").addEventListener("mouseout", enterButtonHoverDelet);
+
 			//טקסט לכפתור
 			var varTxt = new createjs.Text();
-			stage.addChild(varTxt);
+			cont.addChild(varTxt);
 			varTxt.color = "#291A08";
 			varTxt.font = "25px Rubik Regular";
 			varTxt.x = 1145;
@@ -5130,41 +5183,39 @@ if (reversed == null) { reversed = false; }
 			varTxt.textAlign = "right";
 			varTxt.text = "למסך הראשי";
 			varTxt.name = "toTheStartTxt";
-		
-			creatFrame();
+
+
 		}
-		
+
 		//מפה כל הגלילה
-		var move;
-		var myscroll;
 		//יצירת גלילה
 		createjs.Touch.enable(self);
-		
+
 		function theScroll() {
 			// נכניס אליו את כל מה שנרצה להציג ולגלול
 			move = new createjs.Container();
-			stage.addChild(move);
+			cont.addChild(move);
 			//יצירת תוכן
 			creatAppels();
-		
+
 			//כיסוי
 			var orb = new lib.cover();
-			stage.addChild(orb);
+			cont.addChild(orb);
 			orb.x = 45;
 			orb.y = 20;
-		
+
 			// יצירת גרפיקה של הגלילה מהספריה
 			myscroll = new lib.scroll();
-			stage.addChild(myscroll);
+			cont.addChild(myscroll);
 			myscroll.x = 850;
 			myscroll.y = 350;
-		
+
 			mythumb = new lib.thumb();
-			stage.addChild(mythumb);
+			cont.addChild(mythumb);
 			mythumb.x = 850;
 			mythumb.y = 350;
 			mythumb.addEventListener('mousedown', startdragF);
-		
+
 			//משתנים לחישוב הגלילה
 			var barHight = 294.95;
 			var lineHight = 160;
@@ -5175,18 +5226,16 @@ if (reversed == null) { reversed = false; }
 			}
 			HacfolaY = (lineHight * lineCount) / barHight;
 		}
-		
-		//משתנה של יחסיות גלילה 	
-		var HacfolaY;
-		
+
+
 		//מייצר מאזינים בלחיצה על הסמן
 		function startdragF(e) {
-			stage.addEventListener("pressmove", dragF);
-			stage.addEventListener('stagemouseup', stopdragF);
+			cont.addEventListener("pressmove", dragF);
+			cont.addEventListener('stagemouseup', stopdragF);
 		}
 		//מסיר מאזינים בשחרור עכבר
 		function stopdragF(e) {
-			stage.removeEventListener("pressmove", dragF);
+			cont.removeEventListener("pressmove", dragF);
 		}
 		//משנה את הY של הסמן ושל בקונטיינר
 		function dragF(e) {
@@ -5196,11 +5245,8 @@ if (reversed == null) { reversed = false; }
 				move.y = 0 - (HacfolaY * (mythumb.y - 350));
 			}
 		}
-		
-		
-		
-		var YspaceCountR = 0;
-		var YspaceCountW = 0;
+
+
 		//יצירה של תוכן
 		function creatAppels() {
 			var rightfirstAppelX = 70;
@@ -5213,14 +5259,14 @@ if (reversed == null) { reversed = false; }
 			YspaceCountW = 0;
 			var YplauserR = 0
 			var YplauserW = 0
-		
+
 			//יצירה
 			for (i = 1; i < AllTheContent[GameNum].length; i++) {
 				//יצירה של תפוחים
 				var myApple = new lib.apple();
 				move.addChild(myApple);
 				myApple.name = "myApple" + i;
-		
+
 				if (AllTheContent[GameNum][i][1] == true) {
 					move.getChildByName("myApple" + i).gotoAndStop(1);
 					myApple.x = rightfirstAppelX + (XspaceCountR * space);
@@ -5228,7 +5274,7 @@ if (reversed == null) { reversed = false; }
 					if (XspaceCountR > 1) {
 						XspaceCountR = 0;
 					}
-		
+
 					myApple.y = firstAppleY + (YspaceCountR * space);
 					YplauserR++;
 					if (YplauserR == 2) {
@@ -5243,7 +5289,7 @@ if (reversed == null) { reversed = false; }
 					if (XspaceCountW > 1) {
 						XspaceCountW = 0;
 					}
-		
+
 					myApple.y = firstAppleY + (YspaceCountW * space);
 					YplauserW++;
 					if (YplauserW == 2) {
@@ -5253,7 +5299,7 @@ if (reversed == null) { reversed = false; }
 				}
 				//יצירה של תוכן לתפוחים
 				if (AllTheContent[GameNum][i][2] == "imeg") {
-		
+
 					//תמונות
 					var myPhoto = new AllTheContent[GameNum][i][0]();
 					move.addChild(myPhoto);
@@ -5262,7 +5308,7 @@ if (reversed == null) { reversed = false; }
 					myPhoto.name = "myAppleTxt" + i;
 					move.getChildByName("myAppleTxt" + i).addEventListener("click", scalePhoto);
 				}
-		
+
 				else {
 					//תיבות טקסט
 					var myAppleTxt = new createjs.Text();
@@ -5298,20 +5344,11 @@ if (reversed == null) { reversed = false; }
 				worngIcon.name = "worngIcon" + worngAnsIndex[i];
 			}
 		}
-		
-		
-		
-		
-		
+
 		//ריסטארט
 		function restart() {
 			//חסרה קריאה לפונקציה שמוחקת את מסך סיום	
-			stage.removeAllChildren();
-			var backgrund = new lib.BackgroundMain();
-			stage.addChild(backgrund);
-			backgrund.name = "MainBackground";
-			backgrund.x = 0;
-			backgrund.y = 0;
+			cont.removeAllChildren();
 			stage.getChildByName("MainBackground").gotoAndStop(2)
 			//איפוס משתנים
 			varToStartPoint();
@@ -5320,22 +5357,23 @@ if (reversed == null) { reversed = false; }
 			//קריאה למסך שאלה בגדול
 			creatQbigScreen();
 		}
-		
-		
+
 		//לא שומר מספר משחק
 		//למסך בחירת נושא
 		function toTheStart() {
 			//עצירת סאונד
 			createjs.Sound.stop();
 			//חסרה קריאה לפונקציה שמוחקת את מסך סיום	
-			stage.removeAllChildren();
+			cont.removeAllChildren();
+			//שינוי רקע
+			stage.getChildByName("MainBackground").gotoAndStop(0)
 			//איפוס משתנים
 			varToStartPoint();
 			//קריאה ליצירת מסך התחלה
 			CreatopenScreen();
 		}
-		
-		
+
+
 		//פונקצייה לאיפוס משתנים
 		function varToStartPoint() {
 			gameEnd = false;
@@ -5358,28 +5396,64 @@ if (reversed == null) { reversed = false; }
 				}
 			}
 		}
-		
-		
-		
-		
-		
-		
+
+
+
+
+
+
+
 		//פונקציות כלליות לכל מיני חלקים במשחק
-		
+
 		//--- בדיקת חפיפה בין שני אובייקטים
 		function intersect(obj1, obj2) {
-		
-			var obj1W = obj1.nominalBounds;
-			var obj2W = obj2.nominalBounds;
-		
-			if (obj1.x + (obj1W.width / 2) >= obj2.x && obj1.x + (obj1W.width / 2) <= obj2.x + obj2W.width) {
+			////console.log("X תפוח" + obj1.x);
+			////console.log("y תפוח" + obj1.y);
+			////console.log("X בלנדר" + obj2.x);
+			////console.log("y בלנדר" + obj2.y);
+			////תפוח
+			//var obj1W = obj1.nominalBounds;
+			
+			////בלנדר איזור פגיעה
+			//var obj2W = obj2.HitZone.nominalBounds;
+			
+
+			//var AppelRightPoint = obj1.x + 10;
+			//var AppelLeftPoint = obj1.x + obj1W - 10;
+
+			//if (AppelLeftPoint >= obj2.x - 85.9 /*&& AppelRightPoint <= obj2.x - 85.9 + obj2W.width*/) {
+			//	console.log("hit!");
+			//	return true;
+   //         }
+
+
+			////if (obj1.x-20 >= obj2.x-85.9 && obj1.x+ obj1W.width <= obj2.x-85.9 +obj2W.width+20 &&
+			////	obj1.y+obj1W.height+20 >= 430+obj1W.height && obj1.y -20 <= obj2.y+28.9) {
+			////	return true;
+			////}
+			//else {
+			//	console.log("miss");
+			//	return false;
+			//}
+			{
+
+				var obj1W = obj1.nominalBounds;
+				var obj2W = obj2.HitZone.nominalBounds;
+				//צד ימין
+				if (obj1.x + (obj1W.width / 2) <= obj2.x-85.9 - (obj2W.width / 2)) {
+					return false;
+				} else if (obj1.y + (obj1W.height / 2) <= obj2.y-28.9 - (obj2W.height / 2)) {
+					return false;
+					//צד שמאל
+				} else if (obj1.x - (obj1W.width / 2) > obj2.x-85.9 + (obj2W.width / 2)) {
+					return false;
+				} else if (obj1.y - (obj1W.height / 2) > obj2.y-28.9 + (obj2W.height / 2)) {
+					return false;
+				}
 				return true;
 			}
-			else {
-				return false;
-			}
 		}
-		
+
 		//מגדיל ומקטין תמונה בלחיצה עליה
 		function scalePhoto(evt) {
 			createjs.Tween.get(evt.currentTarget).to({
@@ -5390,58 +5464,51 @@ if (reversed == null) { reversed = false; }
 				scaleY: 1.0
 			}, 500);
 		}
-		
-		
+
+
 		//האוור לכפתורים
 		function enterButtonHover(evt) {
-			stage.getChildByName(evt.currentTarget.name).gotoAndStop(1);
+			cont.getChildByName(evt.currentTarget.name).gotoAndStop(1);
 		}
 		function enterButtonHoverDelet(evt) {
-			stage.getChildByName(evt.currentTarget.name).gotoAndStop(0);
+			cont.getChildByName(evt.currentTarget.name).gotoAndStop(0);
 		}
-		
+		function enterButtonHover1(evt) {
+			cont2.getChildByName(evt.currentTarget.name).gotoAndStop(1);
+		}
+		function enterButtonHoverDelet1(evt) {
+			cont2.getChildByName(evt.currentTarget.name).gotoAndStop(0);
+		}
+
 		//טעינת סאונד
 		function init_sound() {
 			createjs.Sound.registerSound("https://alumappel.github.io/powerOfKnowledge/long.mp3", "gameSound");
 			createjs.Sound.registerSound("https://alumappel.github.io/powerOfKnowledge/worngwav.mp3", "worngSound");
 			createjs.Sound.registerSound("https://alumappel.github.io/powerOfKnowledge/correctwav.mp3", "rightSound");
 		}
-		
-		//יצירת מסגרת
-		var frameOn = false;
-		function creatFrame() {
-			if (frameOn == true) {
-				stage.removeChild(stage.getChildByName("myframe"));
-				frameOn = false;
-				///	console.log("frameOn"+frameOn);
-			}
-			var myframe = new lib.frame();
-			stage.addChild(myframe);
-			myframe.x = 0;
-			myframe.y = 0;
-			myframe.name = "myframe";
-			frameOn = true;
-			///console.log("frameOn"+frameOn);
-		}
-		
-		
-		//השתקה
-		var isMuted = false;
+
+
+
+		//השתקה		
 		function MuteGame() {
 			//עוצר
 			if (isMuted == false) {
 				isMuted = true;
-				stage.getChildByName("muteButton").gotoAndStop(1);
+				cont.getChildByName("muteButton").gotoAndStop(1);
 				longSound.muted = true;
 			}
 			//מחזיר
 			else {
 				isMuted = false;
-				stage.getChildByName("muteButton").gotoAndStop(0);
+				cont.getChildByName("muteButton").gotoAndStop(0);
 				longSound.muted = false;
 			}
 		}
 	}
+
+
+	///סוף קוד שלייי
+
 
 	// actions tween:
 	this.timeline.addTween(cjs.Tween.get(this).call(this.frame_0).wait(1));
