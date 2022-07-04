@@ -4594,7 +4594,9 @@
                 Basket.name = "myBasket";
                 var BasktN= Basket.greenFill.nominalBounds
                 Basket.greenFill.y = 40;
-                Basket.greenFill.regY = BasktN.height+10;
+                Basket.greenFill.regY = BasktN.height + 9.02;
+                //Basket.greenFill.
+                //countRightAnsYet = 8;
 
                 //יצירת תיבת טקסט למד תשובות
                 var ansGageTxt = new createjs.Text();
@@ -4848,6 +4850,9 @@
             //פונקצייה ששולטת בכמה הבקבוק מלא		
             function fillButtel() {                
                 cont2.getChildByName("myBasket").greenFill.scaleY = (1 / countRightAns) * countRightAnsYet;
+                console.log("scale Y =" + cont2.getChildByName("myBasket").greenFill.scaleY);
+                console.log("scale Y calc: " + (1 / countRightAns) + " * " + countRightAnsYet);
+
             }
 
             //השהייה		
@@ -4989,10 +4994,10 @@
                 seconds = seconds.toFixed(0);
 
                 if (seconds < 10) {
-                    seconds = "0" + seconds.toString;                    
+                    seconds = "0" + seconds;                    
                 }
                 if (minets < 0) {                    
-                        minets = "0" + minets.toString;
+                        minets = "0" + minets;
                 }
 
               
