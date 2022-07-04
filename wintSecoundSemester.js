@@ -3949,6 +3949,8 @@
             if (this.totalFrames == 1) {
                 this.isSingleFrame = true;
             }
+
+
             ////סטוריבורד פתיח
             //var backgrund = new lib.BackgroundMain();
             //	stage.addChild(backgrund);
@@ -3989,8 +3991,7 @@
             var badSound;
 
             //משתנים למסך סיום
-            var worngAnsCount = 0;
-            var time = 0;
+            var worngAnsCount = 0;            
             var grade = 0;
             var worngAnsIndex = [];
 
@@ -4000,6 +4001,8 @@
             var overAllPauseTime = 0;
             var forInterval;
             var timeNotPlayed = 0;
+            var minets = 0;
+            var seconds = 0;
 
             //מערך מיקומים
             var Xplace = [];
@@ -4034,14 +4037,13 @@
             var HacfolaY;
             //יצירת רווחים בתוך הגלילה
             var YspaceCountR = 0;
-            var YspaceCountW = 0;
-            // האם יש מסגרת
-            var frameOn = false;
+            var YspaceCountW = 0;       
             //השתקה
             var isMuted = false;
             //תנועת חיצים
             var directionX = "";
-
+            //סוף משחק
+            var AppelStops = false;
 
 
 
@@ -4124,7 +4126,7 @@
             myframe.x = 0;
             myframe.y = 0;
             myframe.name = "myframe";
-            frameOn = true;
+            
 
 
             ///----נסטייה מפה הערה
@@ -4143,10 +4145,7 @@
             startGameFirstTime();
             //////
 
-
-
-
-
+            
             //פונקצייה למסך בחירת נושא
             function CreatopenScreen() {
 
@@ -4237,7 +4236,7 @@
                 storyTxt.textAlign = "right";
                 storyTxt.lineHeight = 30;
                 storyTxt.lineWidth = 600;
-                storyTxt.text = "היי אני יצחק, אני מאוד אוהב לשתות מיץ תפוחים ובשביל זה אני צריך את עזרתכם\nעזרו לי בבקשה לאסוף לתוך הסל כמה שיותר תפוחים נכונים למיץ התפוחים שלי\nבקבוק המיץ שלי יתמלא ככל שתאספו יותר תפוחים, וככה אני אוכל להנות ממיץ התפוחים";
+                storyTxt.text = "היי אני יצחק, אני מאוד אוהב לשתות מיץ תפוחים ובשביל זה אני צריך את עזרתכם\nעזרו לי בבקשה לאסוף לתוך הבלנדר כמה שיותר תפוחים נכונים למיץ התפוחים שלי\nהבלנדר שלי יתמלא במיץ ככל שתאספו יותר תפוחים, וככה אני אוכל להנות ממיץ התפוחים";
                 storyTxt.name = "storyTxt";
 
 
@@ -4316,9 +4315,6 @@
             }
 
 
-
-
-
             //יצירת מסך שאלה בגדול
             function creatQbigScreen() {
                 //העלמת בלנדר
@@ -4341,7 +4337,7 @@
                 QTxt_big.textAlign = "center";
                 QTxt_big.lineHeight = 30;
                 QTxt_big.lineWidth = 600;
-                QTxt_big.text = "איספו בגרירה אל תוך הסל את כל התפוחים שעליהם " + AllTheContent[GameNum][0][1];
+                QTxt_big.text = "איספו בעזרת תנועת חיצים אל תוך ההבלנדר את כל התפוחים שעליהם " + AllTheContent[GameNum][0][1];
                 QTxt_big.name = "QTxt_big";
 
                 //הוספת הכפתור לבמה
@@ -4415,15 +4411,15 @@
                 Xplace = [];
                 var stageW = parseInt(canvas.style.width);
                 for (i = 0; i <= AllTheContent[GameNum].length; i++) {
-                    Xplace[i] = Math.floor((Math.random() * 700)) + 148;
+                    Xplace[i] = Math.floor((Math.random() * 820)) + 15;
                 }
             }
 
-            
+            // יצירת סדר נפילה
             function creatAppleByFallingOrder() {           
                
                 //לולאה ליצירת תוכן במערך מעורבב
-                for (i = 1; i < AllTheContent[GameNum].length - 1; i++) {                                    
+                for (i = 1; i < AllTheContent[GameNum].length; i++) {                                    
                         appleByFallingOrder.splice(appleByFallingOrder.length, 0, i);                   
                 }               
                appleByFallingOrder = appleByFallingOrder.sort(() => Math.random() - 0.5)
@@ -4432,23 +4428,18 @@
                     var loopi = 0;
                     var whilei = 0;
                     while (whilei < 1) {
-                        if (AllTheContent[GameNum][appleByFallingOrder[loopi]][1] == true) {
-                            console.log("לולאה פנימית שמחליפה");
+                        if (AllTheContent[GameNum][appleByFallingOrder[loopi]][1] == true) {                            
                            appleByFallingOrder.push(appleByFallingOrder[loopi]);
                           appleByFallingOrder.splice(loopi, 1);
                             whilei = 1;
                         }
                         else {
-                            loopi++;
-                            console.log("לולאה פנימית שרצה");
+                            loopi++;                            
                         }
                     }
                 }               
             
             }
-
-
-
 
             //ספירת תשובות נכונות
             function RightAnsCounter() {
@@ -4480,7 +4471,7 @@
                 QTxt.textAlign = "right";
                 QTxt.lineHeight = 30;
                 QTxt.lineWidth = 286;
-                QTxt.text = "איספו בגרירה אל תוך הסל את כל התפוחים שעליהם " + AllTheContent[GameNum][0][1];
+                QTxt.text = "איספו בעזרת תנועת חיצים אל תוך ההבלנדר את כל התפוחים שעליהם " + AllTheContent[GameNum][0][1];
                 QTxt.name = "QTxt";
                 cont.getChildByName("QTxt").alpha = 0;
                 //במידה ויש תמונה
@@ -4620,9 +4611,10 @@
 
                 //יצירת לוח משוב
                 var FreedbackKid = new lib.Freedback();
-                cont.addChild(FreedbackKid);
-                FreedbackKid.x = 40;
-                FreedbackKid.y = 720;
+                cont2.addChild(FreedbackKid);
+                FreedbackKid.x = 40;     
+                FreedbackKid.y = 760;
+                //FreedbackKid.y = 760;
                 FreedbackKid.gotoAndStop(1);
                 FreedbackKid.name = "FreedbackKid";
 
@@ -4635,13 +4627,15 @@
             //בחירת התפוח הבא במערך האקראי
             //החלטה על סיום משחק	
             function chooseApple() {
-                if (countRightAns == countRightAnsYet) {
+                if (countRightAns == countRightAnsYet || appleByFallingOrder[index+1]==undefined) {
+                   
+                    AppelStops = true;
                     gameOver();
-                    choosenApple = -1;
+
                 }
                 else {
                     index++;
-                    choosenApple = appleByFallingOrder[index];
+                    choosenApple = appleByFallingOrder[index];                  
                 }
             }
 
@@ -4660,10 +4654,9 @@
 
             //פונקצייה המחליפה תפוח הופכת לנראה וגורמת לו לזוז
             function startGame() {
-                chooseApple();
-                if (gameEnd == false) {
-                    cont1.getChildByName("myApple" + choosenApple).alpha = 1;
-                    cont1.getChildByName("myApple" + choosenApple).mouseEnabled = "true";
+                chooseApple();                
+                if (AppelStops == false) {
+                    cont1.getChildByName("myApple" + choosenApple).alpha = 1;                    
                     //גורם לדברים לזוז
                     createjs.Ticker.addEventListener("tick", mytickfunction);
                 }
@@ -4700,26 +4693,24 @@
             function mytickfunction() {
                 //במידה וצריך לרדת עד למטה 
                 if (downAndOut == true) {
-                    //מוריד
-                    if (choosenApple >= 0 && index + 1 <= appleByFallingOrder.length) {
+                    //מוריד                    
                         if (cont1.getChildByName("myApple" + choosenApple).y < 700) {
                             cont1.getChildByName("myApple" + choosenApple).y += speedNum * 5;
                         }
                         //עוצר
                         if (cont1.getChildByName("myApple" + choosenApple).y >= 700) {
 
-                            startGame();
+                            //startGame();
                             cont1.getChildByName("myApple" + choosenApple).alpha = 0;
                             createjs.Ticker.removeEventListener("tick", mytickfunction);
 
                             downAndOut = false;
                             //קריאה לתפוח נוסף
                             startGame();
-                        }
-                    }
+                        }                    
                 }
                 //תזוזה רגילה
-                if (downAndOut != true) {
+                if (downAndOut != true && AppelStops == false) {
                     if (isPaused != true) {
                     cont1.getChildByName("myApple" + choosenApple).y += speedNum * 5;
                     if (intersect(cont1.getChildByName("myApple" + choosenApple), cont2.getChildByName("myBasket"))) {
@@ -4727,26 +4718,10 @@
                     }
                     //החלק התחתון של התפוח מתחת לחלק התחתון של איזור הפגיעה
                     if (cont1.getChildByName("myApple" + choosenApple).y +165>= 540.4+(-28.9)+144.7) {
-                        AppelInBasket(false);
-                        //430
+                        AppelInBasket(false);                       
                         }
                     }
-
-                    //if (choosenApple >= 0 && index + 1 <= appleByFallingOrder.length)
-                    //{
-                    //	if (cont1.getChildByName("myApple" + choosenApple).y < 500)
-                    //	{
-                    //		cont1.getChildByName("myApple" + choosenApple).y += speedNum*5;						
-                    //	}
-                    //	//בודק מיקום
-                    //	if (cont1.getChildByName("myApple" + choosenApple).y >= 500)
-                    //	{
-                    //		AppelInBasket();
-                    //	}
-                    //}
-                    ////createjs.Ticker.removeEventListener("tick", mytickfunction);
                 }
-
 
                 //תנועה של הסל
                 if (directionX != "") {
@@ -4767,8 +4742,8 @@
             //חיווים
             function AppelInBasket(intrecectTrue) {
                 //הסרת טיקר
-                createjs.Ticker.removeEventListener("tick", mytickfunction);
-                               //זיהוי פגיעה
+                createjs.Ticker.removeEventListener("tick", mytickfunction);       
+                //זיהוי פגיעה
                 if (intrecectTrue == true) {
                     //אם פגע ונכון
                     if (AllTheContent[GameNum][choosenApple][1] == true) {
@@ -4784,7 +4759,7 @@
                             goodSound = createjs.Sound.play("rightSound");
                         }
                         //אנימצייה
-                        cont.getChildByName("FreedbackKid").gotoAndPlay(1);
+                        cont2.getChildByName("FreedbackKid").gotoAndPlay(1);
                         //המתנה וקריאה לפונקציה שמעלימה וומשיכה 
                         myTimeout = setTimeout(continuedRight, 2000);
                     }
@@ -4804,7 +4779,7 @@
                             badSound = createjs.Sound.play("worngSound");
                         }
                         //אנימצייה
-                        cont.getChildByName("FreedbackKid").gotoAndPlay(56);
+                        cont2.getChildByName("FreedbackKid").gotoAndPlay(56);
                         //המתנה והעלמת תפוח
                         myTimeout = setTimeout(continuedWorng, 2000);
                     }
@@ -4828,10 +4803,11 @@
                             badSound = createjs.Sound.play("worngSound");
                         }
                         //אנימצייה
-                        cont.getChildByName("FreedbackKid").gotoAndPlay(56);
+                        cont2.getChildByName("FreedbackKid").gotoAndPlay(56);
                         //המתנה והעלמת תפוח
                         myTimeout = setTimeout(continuedWorng, 2000);
                     }
+
                     //לא פגע ונכון
                     else {
                         //מוריד שקיפות ומבטל לחיצה					
@@ -4846,7 +4822,13 @@
             function continuedRight() {
                 clearTimeout(myTimeout);
                 //מעלים וקורא לתפוח חדש			
+                //מחזיר למעלה
+                cont1.getChildByName("myApple" + choosenApple).y = -40;
+                //מחזיר צבע תפוח למקורי
+                cont1.getChildByName("myApple" + choosenApple).gotoAndStop(0);
+                //מעלים
                 cont1.getChildByName("myApple" + choosenApple).alpha = 0;
+                //קורא לעוד תפוח
                 startGame();
             }
 
@@ -4877,7 +4859,7 @@
                     creatPauseWindow();
                     //משתנה זמני לשמירת המספר
                     var theAppel = choosenApple;
-                    choosenApple = -1;                    
+                    AppelStops = true;
                     //החזרת תפוח למערך נפילה 
                     appleByFallingOrder.splice(appleByFallingOrder.length - 1, 0, choosenApple)
                   
@@ -4894,6 +4876,7 @@
                     isPaused = false;
                     overAllPauseTime += endPauseTime - startPauseTime;
                     timeNotPlayed = 0;
+                    AppelStops = false;
                     startGame();
                 }
             }
@@ -4961,7 +4944,7 @@
             //השהייה כפוייה
             function checkNotPlayed() {
                 timeNotPlayed++;
-                if (timeNotPlayed >= 20 && isPaused == false) {
+                if (timeNotPlayed >= 3.69/speedNum*5 && isPaused == false) {
                     pauseGame();
                 }
             }
@@ -4984,24 +4967,35 @@
 
             ///====מפה נגמר המשחק
 
-
-
-
-
-
-
-
+                       
 
             //סיום משחק
             function gameOver() {
                 gameEnd = true;
                 //לקיחת זמן סיום
                 endTime = window.performance.now();
-                //חישוב הזמן והמרה לדקות
-                time = (endTime - startTime - overAllPauseTime) / 60000;
-                //קיצור הזמן לשני מספרים אחרי הנקודה
-                time = time.toFixed(2);
+                //חישוב הזמן והמרה לדקות          
+                seconds = (endTime - startTime - overAllPauseTime);
+                while (seconds >= 60000) {
+                    seconds = seconds - 60000;
+                    minets++;
+                }
+                if (seconds < 60000) {
+                    seconds = seconds / 1000;
+                }
 
+               
+                //קיצור הזמן לשני מספרים אחרי הנקודה
+                seconds = seconds.toFixed(0);
+
+                if (seconds < 10) {
+                    seconds = "0" + seconds.toString;                    
+                }
+                if (minets < 0) {                    
+                        minets = "0" + minets.toString;
+                }
+
+              
                 //הכנסת תוכן למערך של אינדקס שאלות שטעו בהן
                 //ספירת שגיאות
                 for (i = 1; i < (AllTheContent[GameNum].length); i++) {
@@ -5075,7 +5069,7 @@
                 var myrightsign = new lib.rightsign();
                 cont.addChild(myrightsign);
                 myrightsign.x = 140;
-                myrightsign.y = 290;
+                myrightsign.y = 290;              
                 myrightsign.name = "myrightsign";
 
                 var myworngsign = new lib.worngsign();
@@ -5142,7 +5136,7 @@
                 varTxt.x = 1120;
                 varTxt.y = 382;
                 varTxt.textAlign = "right";
-                varTxt.text = ("זמן: " + time);
+                varTxt.text = ("זמן: " + minets+":"+seconds);
                 varTxt.name = "timeTxt";
 
                 //כפתור למסך הראשי
@@ -5352,18 +5346,52 @@
                 }
             }
 
+
+
+
+           ///---------------איפוסים---------------///
+
+
             //ריסטארט
             function restart() {
-                //חסרה קריאה לפונקציה שמוחקת את מסך סיום	
+                cont.getChildByName("startagain").removeEventListener("mouseout", enterButtonHoverDelet);
                 cont.removeAllChildren();
+                cont1.removeAllChildren();
+                cont2.removeAllChildren();
+
+                console.log("removed all");
+
                 stage.getChildByName("MainBackground").gotoAndStop(2)
+
+                console.log("canhe background");
                 //איפוס משתנים
                 varToStartPoint();
+                console.log("var restart");
+
+                //יצירת שלט נושא
+                var subTxt = new createjs.Text();
+                cont.addChild(subTxt);
+                subTxt.color = "#291A08";
+                subTxt.font = "30px Rubik Regular";
+                subTxt.x = 1085;
+                subTxt.y = 102;
+                subTxt.textAlign = "center";
+                subTxt.text = AllTheContent[GameNum][0][0];
+                subTxt.name = "subTxt";
+
+                console.log("sing created");
                 //קריאה ליצירת לוח משחק
                 CreatGameBoard();
+
+                console.log("game bord created");
                 //קריאה למסך שאלה בגדול
                 creatQbigScreen();
+                console.log("bigQ created");
             }
+
+
+
+
 
             //לא שומר מספר משחק
             //למסך בחירת נושא
@@ -5371,11 +5399,16 @@
                 //עצירת סאונד
                 createjs.Sound.stop();
                 //חסרה קריאה לפונקציה שמוחקת את מסך סיום	
+                cont.getChildByName("toTheStart").removeEventListener("mouseout", enterButtonHoverDelet);
                 cont.removeAllChildren();
+                cont1.removeAllChildren();
+                cont2.removeAllChildren();
+
                 //שינוי רקע
                 stage.getChildByName("MainBackground").gotoAndStop(0)
                 //איפוס משתנים
                 varToStartPoint();
+                GameNum = 0;
                 //קריאה ליצירת מסך התחלה
                 CreatopenScreen();
             }
@@ -5383,19 +5416,63 @@
 
             //פונקצייה לאיפוס משתנים
             function varToStartPoint() {
+                //משתנה על מצב  המשחק 
                 gameEnd = false;
+
+                //משתנים למסך סיום
                 worngAnsCount = 0;
-                time = 0;
                 grade = 0;
                 worngAnsIndex = [];
+
+                //משתנים של זמן
                 startTime = 0;
                 endTime = 0;
                 overAllPauseTime = 0;
+                forInterval;
+                timeNotPlayed = 0;
+                minets = 0;
+                seconds = 0;
+
+                //מערך מיקומים
+                Xplace = [];
+
+                //יצירת מערך סדר נפילה
+                appleByFallingOrder = [];
+                //ספירת תשובות נכונות והחלטה על סיום משחק
+                countRightAns = 0;
+                //התפוח שכרגע במשחק
                 choosenApple = 0;
+                //החלטה על סיום משחק
                 index = -1;
-                isPaused = false;
-                speedNum = 2;
+                //האם התפוח יצא ואפשר להכניס חדש
+                downAndOut = false;
+                //נגמר הזמן
+                myTimeout = 0;
+                //לבקבוק
+                //ספירת תשובות נכונות
                 countRightAnsYet = 0;
+                //ספירת הפריים המוצג
+                currentFrame = 0;
+                //השהייה
+                isPaused = false;
+                //ספירת זמן השהייה
+                startPauseTime;
+                //מהירות משחק
+                speedNum = 2;
+                //משתני גלילה
+                move = 0;
+                myscroll = 0;
+                //משתנה של יחסיות גלילה
+                HacfolaY;
+                //יצירת רווחים בתוך הגלילה
+                YspaceCountR = 0;
+                YspaceCountW = 0;
+                //השתקה
+                isMuted = false;
+                //תנועת חיצים
+                directionX = "";
+                //סוף משחק
+                AppelStops = false;
                 //איפוס בדיקת שגיאה
                 for (i = 1; i < (AllTheContent[GameNum].length); i++) {
                     if (AllTheContent[GameNum][i][3] == "mistake") {
@@ -5403,9 +5480,6 @@
                     }
                 }
             }
-
-
-
 
 
 
@@ -5441,13 +5515,7 @@
                     //יותר מחצי תפוח יוצר מצד שמאל
                 } else if (AppelRight - (obj1W.width / 2) > BlanderHalfW) {
                     return false;
-                }
-                //	//יותר מחצי תפוח יוצר מהתחתית של הבלנדר
-                //	//בוקד נקודת תחתונה לחיתוך
-                //	///לא רלוונטי
-                //} else if (obj1.y - (obj1W.height / 2) > obj2.y-28.9 + (obj2W.height / 2)) {
-                //	return false;
-                //}
+                }               
                 return true;
             }
 
@@ -5465,14 +5533,14 @@
 
 
             //האוור לכפתורים
-            function enterButtonHover(evt) {
+            function enterButtonHover(evt) {               
                 cont.getChildByName(evt.currentTarget.name).gotoAndStop(1);
             }
             function enterButtonHoverDelet(evt) {
                 cont.getChildByName(evt.currentTarget.name).gotoAndStop(0);
             }
             function enterButtonHover1(evt) {
-                cont2.getChildByName(evt.currentTarget.name).gotoAndStop(1);
+                cont2.getChildByName(evt.currentTarget.name).gotoAndStop(1); 
             }
             function enterButtonHoverDelet1(evt) {
                 cont2.getChildByName(evt.currentTarget.name).gotoAndStop(0);
