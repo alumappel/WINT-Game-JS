@@ -4849,9 +4849,7 @@
 
             //פונקצייה ששולטת בכמה הבקבוק מלא		
             function fillButtel() {                
-                cont2.getChildByName("myBasket").greenFill.scaleY = (1 / countRightAns) * countRightAnsYet;
-                console.log("scale Y =" + cont2.getChildByName("myBasket").greenFill.scaleY);
-                console.log("scale Y calc: " + (1 / countRightAns) + " * " + countRightAnsYet);
+                cont2.getChildByName("myBasket").greenFill.scaleY = ((1 - 0.2) / countRightAns) * countRightAnsYet;              
 
             }
 
