@@ -699,37 +699,6 @@ p.draw = _componentDraw;
 
 
 
-(lib.Symbol1 = function(mode,startPosition,loop,reversed) {
-if (loop == null) { loop = true; }
-if (reversed == null) { reversed = false; }
-	var props = new Object();
-	props.mode = mode;
-	props.startPosition = startPosition;
-	props.labels = {};
-	props.loop = loop;
-	props.reversed = reversed;
-	cjs.MovieClip.apply(this,[props]);
-
-	// Layer_1
-	this.PinCodeText = new cjs.Text("!קדימה", "italic bold 23px 'Calibri'");
-	this.PinCodeText.name = "PinCodeText";
-	this.PinCodeText.textAlign = "center";
-	this.PinCodeText.lineHeight = 30;
-	this.PinCodeText.lineWidth = 86;
-	this.PinCodeText.parent = this;
-	this.PinCodeText.setTransform(50.1,5.35);
-
-	this.shape = new cjs.Shape();
-	this.shape.graphics.f().s("#663300").ss(1,1,1).p("AopirIRTAAIAAFXIxTAAg");
-	this.shape.setTransform(50.575,18.2);
-
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.shape},{t:this.PinCodeText}]}).wait(1));
-
-	this._renderFirstFrame();
-
-}).prototype = getMCSymbolPrototype(lib.Symbol1, new cjs.Rectangle(-5.8,0.1,112.8,36.3), null);
-
-
 (lib.comboBG = function(mode,startPosition,loop,reversed) {
 if (loop == null) { loop = true; }
 if (reversed == null) { reversed = false; }
@@ -742,7 +711,7 @@ if (reversed == null) { reversed = false; }
 	cjs.MovieClip.apply(this,[props]);
 
 	// Layer_1
-	this.WhatToDoText1 = new cjs.Text("קודים לדוגמה: 100,101", "12px 'Broadway'", "#666666");
+	this.WhatToDoText1 = new cjs.Text("קודים לדוגמה: 102,101", "12px 'Broadway'", "#666666");
 	this.WhatToDoText1.name = "WhatToDoText1";
 	this.WhatToDoText1.textAlign = "center";
 	this.WhatToDoText1.lineHeight = 15;
@@ -3414,32 +3383,20 @@ if (reversed == null) { reversed = false; }
 	this.responeTxt.name = "responeTxt";
 	this.responeTxt.textAlign = "center";
 	this.responeTxt.lineHeight = 24;
-	this.responeTxt.lineWidth = 292;
+	this.responeTxt.lineWidth = 500;
 	this.responeTxt.parent = this;
-	this.responeTxt.setTransform(58.5,14);
-
-	this.responeTxt_1 = new cjs.Text("", "18px 'Calibri'", "#FFFFFF");
-	this.responeTxt_1.name = "responeTxt_1";
-	this.responeTxt_1.textAlign = "center";
-	this.responeTxt_1.lineHeight = 24;
-	this.responeTxt_1.lineWidth = 292;
-	this.responeTxt_1.parent = this;
-	this.responeTxt_1.setTransform(58.5,78.2);
+	this.responeTxt.setTransform(55,14);
 
 	this.gameCode_txt = new lib.an_TextInput({'id': 'gameCode_txt', 'value':'', 'disabled':false, 'visible':true, 'class':'ui-textinput'});
 
 	this.gameCode_txt.name = "gameCode_txt";
-	this.gameCode_txt.setTransform(60.65,-23.8,1.5099,2.3699,0,0,0,49.9,10.7);
+	this.gameCode_txt.setTransform(58.15,-23.75,1.5403,2.27,0,0,0,49.9,10.8);
 
-	this.play_btn = new lib.Symbol1();
-	this.play_btn.name = "play_btn";
-	this.play_btn.setTransform(59.7,56.8,1.2998,1.0676,0,0,0,52.4,17.3);
-
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.play_btn},{t:this.gameCode_txt},{t:this.responeTxt_1},{t:this.responeTxt}]}).wait(1));
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.gameCode_txt},{t:this.responeTxt}]}).wait(1));
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.forcomb, new cjs.Rectangle(-89.5,-50.3,296,152.5), null);
+}).prototype = getMCSymbolPrototype(lib.forcomb, new cjs.Rectangle(-197,-49.4,504,110.4), null);
 
 
 (lib.Symbol2 = function(mode,startPosition,loop,reversed) {
@@ -4247,8 +4204,8 @@ if (reversed == null) { reversed = false; }
 		            ]
 		        ]
 		
-		 var GameNum = 1;*/
-		
+		 var GameNum = 1;
+		*/
 		
 		///---------------------------------סוף משתנים למחולל
 		
@@ -4288,10 +4245,11 @@ if (reversed == null) { reversed = false; }
 		
 		            //מפעיל את הפונקצייה בעת טעינת פרוייקט		
 					//לא למחולל			
-		            //CreatopenScreen();
+		            CreatopenScreen();
 					///למחולל
-					CreatopenScreen1();
-		            init_sound();
+					//CreatopenScreen1();
+					
+					  init_sound();        
 		
 		
 		            ////-----נסטיה עד פה הערה
@@ -4375,9 +4333,33 @@ if (reversed == null) { reversed = false; }
 		        forcombo.y = 420;
 		        stage.addChild(forcombo);
 		        forcombo.scale = 0.5;
-		        forcombo.play_btn.alpha = 0.3;
+				forcombo.responeTxt.color = "#A0191B";
+				forcombo.responeTxt.font = "28px Rubik Regular";
 				forcombo.name="forcombo1";
 		        $("#dom_overlay_container").on("keyup", "#gameCode_txt", codeInput_change);
+				
+				
+				//הוספת הכפתור לבמה
+		                var CTA_normal = new lib.cta();
+		                cont.addChild(CTA_normal);
+		                CTA_normal.x = 900;
+		                CTA_normal.y = 520;
+		                CTA_normal.stop();
+		                CTA_normal.name = "enterButton";
+		                cont.getChildByName("enterButton").gotoAndStop(2)
+		
+		
+		                //טקסט לכפתור
+		                var startTxt = new createjs.Text();
+		                cont.addChild(startTxt);
+		                startTxt.color = "#291A08";
+		                startTxt.font = "30px Rubik Regular";
+		                startTxt.x = 920;
+		                startTxt.y = 550;
+		                startTxt.textAlign = "central ";
+		                startTxt.text = "כניסה למשחק";
+		                startTxt.name = "Game start Txt";
+		
 					 
 					 }
 				
@@ -4385,9 +4367,23 @@ if (reversed == null) { reversed = false; }
 				 //למחולל
 				 function codeInput_change(evt) {
 		            //שמירת הערך שנבחר בקומבו
-		            gameCodeUser = evt.currentTarget.value;
-					stage.getChildByName("forcombo1").play_btn.alpha = 1;
-		           stage.getChildByName("forcombo1").play_btn.addEventListener("click", getTheGame);
+		            var gameCodeUser = evt.currentTarget.value;			
+		           
+					 
+					 
+					  if (gameCodeUser > 99) {
+		                    GameNum = evt.currentTarget.value;
+		                    cont.getChildByName("enterButton").gotoAndStop(0)
+		                    cont.getChildByName("enterButton").addEventListener("click", getTheGame);
+		                    cont.getChildByName("enterButton").addEventListener("mouseover", enterButtonHover);
+		                    cont.getChildByName("enterButton").addEventListener("mouseout", enterButtonHoverDelet);
+		                }
+		                else {
+		                    cont.getChildByName("enterButton").gotoAndStop(2);
+		                    cont.getChildByName("enterButton").removeEventListener("click", getTheGame);
+		                    cont.getChildByName("enterButton").removeEventListener("mouseover", enterButtonHover);
+		                    cont.getChildByName("enterButton").removeEventListener("mouseout", enterButtonHoverDelet);
+		                }
 		
 		        }
 				
@@ -4440,12 +4436,16 @@ if (reversed == null) { reversed = false; }
 		
 		                if (error == "Game not publish") {
 		                    console.log("משחק קיים אך לא פורסם");
+							 stage.getChildByName("forcombo1").responeTxt.text="משחק זה קיים אך הוא במצב נסתר";
+		
 		                }
 		                else if (error == "Game not found") {
 		                    console.log("המשחק שחיפשת אינו קיים");
+							stage.getChildByName("forcombo1").responeTxt.text="לצערנו לא קיים משחק עם קוד משחק מתאים";
 		                }
 		                else {
 		                    console.log("אירעה תקלת שרת, נסו שוב");
+							stage.getChildByName("forcombo1").responeTxt.text="אירעה תקלת שרת, אנא רעננו את העמוד ונסו שוב";
 		                    console.log(error);
 		                }
 		            }
@@ -5906,14 +5906,14 @@ lib.properties = {
 	color: "#FFFFFF",
 	opacity: 1.00,
 	manifest: [
-		{src:"images/wintSecoundSemester_atlas_1.png?1657198846495", id:"wintSecoundSemester_atlas_1"},
-		{src:"images/wintSecoundSemester_atlas_2.png?1657198846495", id:"wintSecoundSemester_atlas_2"},
-		{src:"images/wintSecoundSemester_atlas_3.png?1657198846495", id:"wintSecoundSemester_atlas_3"},
-		{src:"https://code.jquery.com/jquery-3.4.1.min.js?1657198846705", id:"lib/jquery-3.4.1.min.js"},
-		{src:"components/sdk/anwidget.js?1657198846705", id:"sdk/anwidget.js"},
-		{src:"components/ui/src/textinput.js?1657198846705", id:"an.TextInput"},
-		{src:"components/ui/src/combobox.js?1657198846705", id:"an.ComboBox"},
-		{src:"components/ui/src/combobox.js?1657198846705", id:"an.ComboBox"}
+		{src:"images/wintSecoundSemester_atlas_1.png?1657201175084", id:"wintSecoundSemester_atlas_1"},
+		{src:"images/wintSecoundSemester_atlas_2.png?1657201175084", id:"wintSecoundSemester_atlas_2"},
+		{src:"images/wintSecoundSemester_atlas_3.png?1657201175084", id:"wintSecoundSemester_atlas_3"},
+		{src:"https://code.jquery.com/jquery-3.4.1.min.js?1657201175322", id:"lib/jquery-3.4.1.min.js"},
+		{src:"components/sdk/anwidget.js?1657201175322", id:"sdk/anwidget.js"},
+		{src:"components/ui/src/textinput.js?1657201175322", id:"an.TextInput"},
+		{src:"components/ui/src/combobox.js?1657201175322", id:"an.ComboBox"},
+		{src:"components/ui/src/combobox.js?1657201175322", id:"an.ComboBox"}
 	],
 	preloads: []
 };
