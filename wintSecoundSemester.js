@@ -3,7 +3,7 @@
 var p; // shortcut to reference prototypes
 var lib={};var ss={};var img={};
 lib.ssMetadata = [
-		{name:"wintSecoundSemester_atlas_1", frames: [[1662,1622,220,116],[900,1413,146,200],[1781,900,220,208],[1747,525,162,200],[0,1685,220,116],[0,1630,1220,53],[1282,0,463,728],[0,0,1280,720],[1747,267,273,256],[1282,900,273,256],[1911,525,92,116],[1938,643,92,116],[1938,761,92,116],[1128,1702,188,61],[1662,1740,188,61],[1340,1614,161,164],[1503,1614,157,165],[1048,1413,161,165],[2005,525,38,41],[2005,568,32,37],[2003,879,32,37],[1781,1110,189,238],[1340,1430,144,139],[900,1141,116,270],[1018,1141,116,270],[1136,1141,116,270],[1254,1158,116,270],[1372,1158,116,270],[1490,1342,116,270],[1608,1342,116,270],[1726,1350,116,270],[1844,1350,116,270],[1222,1430,116,270],[2005,607,32,32],[2003,918,32,32],[1747,0,270,265],[1557,900,222,226],[1557,1128,212,212],[1282,730,654,168],[1972,1110,50,50],[0,1141,898,487],[2022,0,18,326],[2022,328,18,45],[222,1685,245,82],[469,1685,224,74],[921,1685,205,57],[695,1685,224,74],[1884,1622,95,62],[1884,1686,95,62],[921,1744,95,62],[1018,1744,95,62],[0,722,1280,417],[1490,1158,44,44],[2003,952,29,29]]},
+		{name:"wintSecoundSemester_atlas_1", frames: [[1662,1622,220,116],[900,1413,146,200],[1781,900,220,208],[1747,525,162,200],[0,1685,220,116],[0,1630,1220,53],[1282,0,463,728],[0,0,1280,720],[1747,267,273,256],[1282,900,273,256],[1911,525,92,116],[1938,643,92,116],[1938,761,92,116],[1128,1702,188,61],[1662,1740,188,61],[1340,1614,161,164],[1503,1614,157,165],[1048,1413,161,165],[2005,525,38,41],[2005,568,32,37],[2003,879,32,37],[1781,1110,189,238],[1340,1430,144,139],[900,1141,116,270],[1018,1141,116,270],[1136,1141,116,270],[1254,1158,116,270],[1372,1158,116,270],[1490,1342,116,270],[1608,1342,116,270],[1726,1350,116,270],[1844,1350,116,270],[1222,1430,116,270],[2005,607,32,32],[2003,918,32,32],[1747,0,270,265],[1557,900,222,226],[1557,1128,212,212],[1282,730,654,168],[1972,1110,50,50],[0,1141,898,487],[2022,0,18,326],[2022,328,18,45],[222,1685,245,82],[469,1685,224,74],[921,1685,205,57],[695,1685,224,74],[1884,1622,95,62],[1884,1686,95,62],[921,1744,95,62],[1018,1744,95,62],[2003,952,32,32],[0,722,1280,417],[1490,1158,44,44],[2003,986,29,29]]},
 		{name:"wintSecoundSemester_atlas_2", frames: [[0,0,1280,720],[0,722,1280,720]]},
 		{name:"wintSecoundSemester_atlas_3", frames: [[0,0,1280,721],[0,723,1280,721]]}
 ];
@@ -414,23 +414,30 @@ lib.ssMetadata = [
 
 
 
-(lib.wide_popup_sy = function() {
+(lib.TextInput = function() {
 	this.initialize(ss["wintSecoundSemester_atlas_1"]);
 	this.gotoAndStop(51);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.X_button_normal = function() {
+(lib.wide_popup_sy = function() {
 	this.initialize(ss["wintSecoundSemester_atlas_1"]);
 	this.gotoAndStop(52);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.zoom_button_normal = function() {
+(lib.X_button_normal = function() {
 	this.initialize(ss["wintSecoundSemester_atlas_1"]);
 	this.gotoAndStop(53);
+}).prototype = p = new cjs.Sprite();
+
+
+
+(lib.zoom_button_normal = function() {
+	this.initialize(ss["wintSecoundSemester_atlas_1"]);
+	this.gotoAndStop(54);
 }).prototype = p = new cjs.Sprite();
 // helper functions:
 
@@ -676,6 +683,86 @@ if (reversed == null) { reversed = false; }
 
 }).prototype = p = new cjs.MovieClip();
 p.nominalBounds = new cjs.Rectangle(-16,-4,245,82);
+
+
+(lib.an_TextInput = function(options) {
+	this.initialize();
+	this._element = new $.an.TextInput(options);
+	this._el = this._element.create();
+}).prototype = p = new cjs.MovieClip();
+p.nominalBounds = new cjs.Rectangle(0,0,100,22);
+
+p._tick = _tick;
+p._handleDrawEnd = _handleDrawEnd;
+p._updateVisibility = _updateVisibility;
+p.draw = _componentDraw;
+
+
+
+(lib.Symbol1 = function(mode,startPosition,loop,reversed) {
+if (loop == null) { loop = true; }
+if (reversed == null) { reversed = false; }
+	var props = new Object();
+	props.mode = mode;
+	props.startPosition = startPosition;
+	props.labels = {};
+	props.loop = loop;
+	props.reversed = reversed;
+	cjs.MovieClip.apply(this,[props]);
+
+	// Layer_1
+	this.PinCodeText = new cjs.Text("!קדימה", "italic bold 23px 'Calibri'");
+	this.PinCodeText.name = "PinCodeText";
+	this.PinCodeText.textAlign = "center";
+	this.PinCodeText.lineHeight = 30;
+	this.PinCodeText.lineWidth = 86;
+	this.PinCodeText.parent = this;
+	this.PinCodeText.setTransform(50.1,5.35);
+
+	this.shape = new cjs.Shape();
+	this.shape.graphics.f().s("#663300").ss(1,1,1).p("AopirIRTAAIAAFXIxTAAg");
+	this.shape.setTransform(50.575,18.2);
+
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.shape},{t:this.PinCodeText}]}).wait(1));
+
+	this._renderFirstFrame();
+
+}).prototype = getMCSymbolPrototype(lib.Symbol1, new cjs.Rectangle(-5.8,0.1,112.8,36.3), null);
+
+
+(lib.comboBG = function(mode,startPosition,loop,reversed) {
+if (loop == null) { loop = true; }
+if (reversed == null) { reversed = false; }
+	var props = new Object();
+	props.mode = mode;
+	props.startPosition = startPosition;
+	props.labels = {};
+	props.loop = loop;
+	props.reversed = reversed;
+	cjs.MovieClip.apply(this,[props]);
+
+	// Layer_1
+	this.WhatToDoText1 = new cjs.Text("קודים לדוגמה: 100,101", "12px 'Broadway'", "#666666");
+	this.WhatToDoText1.name = "WhatToDoText1";
+	this.WhatToDoText1.textAlign = "center";
+	this.WhatToDoText1.lineHeight = 15;
+	this.WhatToDoText1.lineWidth = 630;
+	this.WhatToDoText1.parent = this;
+	this.WhatToDoText1.setTransform(353,362.05);
+
+	this.WhatToDoText = new cjs.Text("!ברוכים וברוכות הבאות לכוח הכבידע\nהקלידו קוד משחק בכדי להתחיל", "bold 27px 'Calibri'");
+	this.WhatToDoText.name = "WhatToDoText";
+	this.WhatToDoText.textAlign = "center";
+	this.WhatToDoText.lineHeight = 35;
+	this.WhatToDoText.lineWidth = 629;
+	this.WhatToDoText.parent = this;
+	this.WhatToDoText.setTransform(353.5,276.25);
+
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.WhatToDoText},{t:this.WhatToDoText1}]}).wait(1));
+
+	this._renderFirstFrame();
+
+}).prototype = getMCSymbolPrototype(lib.comboBG, new cjs.Rectangle(36,274.3,634,130.8), null);
 
 
 (lib.frame = function(mode,startPosition,loop,reversed) {
@@ -3311,6 +3398,50 @@ if (reversed == null) { reversed = false; }
 }).prototype = getMCSymbolPrototype(lib.CompoundPath, new cjs.Rectangle(5.9,5.7,1374.8,773.3), null);
 
 
+(lib.forcomb = function(mode,startPosition,loop,reversed) {
+if (loop == null) { loop = true; }
+if (reversed == null) { reversed = false; }
+	var props = new Object();
+	props.mode = mode;
+	props.startPosition = startPosition;
+	props.labels = {};
+	props.loop = loop;
+	props.reversed = reversed;
+	cjs.MovieClip.apply(this,[props]);
+
+	// Layer_1
+	this.responeTxt = new cjs.Text("", "18px 'Calibri'", "#FFFFFF");
+	this.responeTxt.name = "responeTxt";
+	this.responeTxt.textAlign = "center";
+	this.responeTxt.lineHeight = 24;
+	this.responeTxt.lineWidth = 292;
+	this.responeTxt.parent = this;
+	this.responeTxt.setTransform(58.5,14);
+
+	this.responeTxt_1 = new cjs.Text("", "18px 'Calibri'", "#FFFFFF");
+	this.responeTxt_1.name = "responeTxt_1";
+	this.responeTxt_1.textAlign = "center";
+	this.responeTxt_1.lineHeight = 24;
+	this.responeTxt_1.lineWidth = 292;
+	this.responeTxt_1.parent = this;
+	this.responeTxt_1.setTransform(58.5,78.2);
+
+	this.gameCode_txt = new lib.an_TextInput({'id': 'gameCode_txt', 'value':'', 'disabled':false, 'visible':true, 'class':'ui-textinput'});
+
+	this.gameCode_txt.name = "gameCode_txt";
+	this.gameCode_txt.setTransform(60.65,-23.8,1.5099,2.3699,0,0,0,49.9,10.7);
+
+	this.play_btn = new lib.Symbol1();
+	this.play_btn.name = "play_btn";
+	this.play_btn.setTransform(59.7,56.8,1.2998,1.0676,0,0,0,52.4,17.3);
+
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.play_btn},{t:this.gameCode_txt},{t:this.responeTxt_1},{t:this.responeTxt}]}).wait(1));
+
+	this._renderFirstFrame();
+
+}).prototype = getMCSymbolPrototype(lib.forcomb, new cjs.Rectangle(-89.5,-50.3,296,152.5), null);
+
+
 (lib.Symbol2 = function(mode,startPosition,loop,reversed) {
 if (loop == null) { loop = true; }
 if (reversed == null) { reversed = false; }
@@ -4053,6 +4184,7 @@ if (reversed == null) { reversed = false; }
 		
 		
 		            //מערך עם כל הנתונים
+					//למחוק או לשים בהערה במחולל
 		            var AllTheContent = [
 		                ["בחר נושא משחק"],
 		                [
@@ -4102,6 +4234,24 @@ if (reversed == null) { reversed = false; }
 		                ]
 		            ]
 		
+		
+		//----------------------------משתנים למחולל
+		
+		/*var url = "api/Games/byCode/";
+		        var myJSON;
+		        var AllTheContent = [
+		            ["בחר נושא משחק"],
+		            [
+		                ["", "", "", ""]
+		
+		            ]
+		        ]
+		
+		 var GameNum = 1;*/
+		
+		
+		///---------------------------------סוף משתנים למחולל
+		
 		            //יצירת רקע וקונטיינרים
 		            //יצירת רקע
 		            var backgrund = new lib.BackgroundMain();
@@ -4136,22 +4286,26 @@ if (reversed == null) { reversed = false; }
 		
 		            ///----נסטייה מפה הערה
 		
-		            //מפעיל את הפונקצייה בעת טעינת פרוייקט				
-		/*            CreatopenScreen();
-		            init_sound();*/
+		            //מפעיל את הפונקצייה בעת טעינת פרוייקט		
+					//לא למחולל			
+		            //CreatopenScreen();
+					///למחולל
+					CreatopenScreen1();
+		            init_sound();
 		
 		
 		            ////-----נסטיה עד פה הערה
 		
 		            //מפעיל ישירות למשח משחק
-		            GameNum = 1;
+		 /*           GameNum = 1;
 		            CreatGameBoard();
 		            forInterval = setInterval(checkNotPlayed, 1000);
-		            startGameFirstTime();
+		            startGameFirstTime();*/
 		            //////
 		
 		            
 		            //פונקצייה למסך בחירת נושא
+					//ללא חיבור למחולל
 		            function CreatopenScreen() {
 		
 		                //הוספת הקומבו לבמה
@@ -4187,6 +4341,7 @@ if (reversed == null) { reversed = false; }
 		            }
 		
 		            //בעת שינוי ערך בקומבו
+				//לא מחולל
 		            function mycb_change(evt) {
 		                if (evt.currentTarget.value != 0) {
 		                    GameNum = evt.currentTarget.value;
@@ -4202,8 +4357,43 @@ if (reversed == null) { reversed = false; }
 		                    cont.getChildByName("enterButton").removeEventListener("mouseout", enterButtonHoverDelet);
 		                }
 		            }
+				
+				//פונקצייה למסך כניסה - למחולל
+				 function CreatopenScreen1() {
+					 
+				//יצירת קומבו	 
+		        var comboBG = new lib.comboBG();
+		        comboBG.x = 600;
+		        stage.addChild(comboBG);
+				comboBG.WhatToDoText.color = "#291A08";
+				comboBG.WhatToDoText.font = "24px Rubik Regular";
+				comboBG.WhatToDoText1.color = "#291A08";
+				comboBG.WhatToDoText1.font = "16px Rubik Regular";
+		
+		        var forcombo = new lib.forcomb();
+		        forcombo.x = 925;
+		        forcombo.y = 420;
+		        stage.addChild(forcombo);
+		        forcombo.scale = 0.5;
+		        forcombo.play_btn.alpha = 0.3;
+				forcombo.name="forcombo1";
+		        $("#dom_overlay_container").on("keyup", "#gameCode_txt", codeInput_change);
+					 
+					 }
+				
+				 //שינוי ערך בקומבו
+				 //למחולל
+				 function codeInput_change(evt) {
+		            //שמירת הערך שנבחר בקומבו
+		            gameCodeUser = evt.currentTarget.value;
+					stage.getChildByName("forcombo1").play_btn.alpha = 1;
+		           stage.getChildByName("forcombo1").play_btn.addEventListener("click", getTheGame);
+		
+		        }
+				
 		
 		            //פונקצייה לכפתור כניסה
+			 //לא למחולל
 		            //פונקצייה למחיקת מסך ראשון וקריאה למסך הבא
 		            function enterButtonFunc() {
 		                ClearOpenScreen();
@@ -4213,6 +4403,114 @@ if (reversed == null) { reversed = false; }
 		                longSound.loop = true;
 		            }
 		
+				
+				
+		 //פונקצייה של נוהר לקריאה לקונטרולר
+				//מחולל
+		        async function getTheGame() {
+		
+		            //משיכת קוד המשחק שהוקלד בתיבת הטקסט
+		            var code = gameCode_txt.value;
+		
+		            //fetch = שיטה הקיימת בג'אווה סקריפט המאפשר לבצע קריאות רשת ולקרוא את התשובות החוזרות מהן
+		            //משתנה המכיל את כל תשובת הרשת שחוזרת מהקריאה לנתיב שהוגדר
+		            var response = await fetch(url + code);
+		
+		            //אם הקריאה הסתיימה והחזירה משחק תקין
+		            if (response.ok) {
+		
+		                //חילוץ המידע של המשחק מקריאת הרשת בפורמט של ג'ייסון
+		                myJSON = await response.json();
+		                console.log(myJSON);
+		                //המירו את הג'ייסון למערך שמתאים למשחק שלכם והפעילו את המשחק
+		                LoadJSONToArry();
+						//פונקציות מקדמות משחק
+						ClearOpenScreen();
+		                creatBackStory();
+		                //הפעלת סאונד רקע
+		                longSound = createjs.Sound.play("gameSound");
+		                longSound.loop = true;
+						
+		            }
+		            //אם הקריאה הסתיימה בתשובה שאינה תקינה (כלומר שגיאה)
+		            else {
+		
+		                //חילוץ תוכן התשובה עצמה שחזרה מהקריאה = התוכן שכתבנו בתוך הסוגריים במחולל
+		                var error = await response.text();
+		
+		                if (error == "Game not publish") {
+		                    console.log("משחק קיים אך לא פורסם");
+		                }
+		                else if (error == "Game not found") {
+		                    console.log("המשחק שחיפשת אינו קיים");
+		                }
+		                else {
+		                    console.log("אירעה תקלת שרת, נסו שוב");
+		                    console.log(error);
+		                }
+		            }
+		        }
+		
+		
+		        // המרה למערך שדומה למערך המשחק המקורי
+			//מחולל
+		        function LoadJSONToArry() {
+		
+		            ///דברים כלליים של המשחק
+		            //נושא
+		            AllTheContent[1][0][0] = myJSON.gameTopic;
+		            //הנחייה
+		            AllTheContent[1][0][1] = myJSON.gameQuestionText;
+		            //סוג טקסט/ תמונה
+		            if (myJSON.gameQuestionImge != null) {
+		                AllTheContent[1][0][2] = "text and imeg";
+		            }
+		            else {
+		                AllTheContent[1][0][2] = "text";
+		            }
+		
+		            //מקור של תמונה
+		            if (AllTheContent[1][0][2] == "text and imeg")
+		                AllTheContent[1][0][3] = myJSON.gameQuestionImge;
+		
+		            ///הכנסת פריטים
+		            for (i = 0; i < myJSON.gameAnswers.length; i++) {
+		                var Item = [];
+		                //תוכן
+		                Item[0] = myJSON.gameAnswers[i].content;
+		                //האם נכון
+		                Item[1] = myJSON.gameAnswers[i].correctAnswer;
+		                //סוג
+		                if (myJSON.gameAnswers[i].haveImge == false) {
+		                    Item[2] = "text";
+		                }
+		                else {
+		                    Item[2] = "imeg";
+		                }
+		                //האם טעו בו
+		                Item[3] = "no mistake";
+		                AllTheContent[1].push(Item);
+		            }
+		            console.log(" המערך שלי2");
+		            console.log(AllTheContent);
+		            creatImg();
+		        }	
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
 		            //מחיקת מסך בחירת נושא
 		            function ClearOpenScreen() {
 		                cont.getChildByName("enterButton").removeEventListener("click", enterButtonFunc);
@@ -5580,6 +5878,16 @@ if (reversed == null) { reversed = false; }
 		                    longSound.muted = false;
 		                }
 		            }
+				
+				
+				//פונקצייה שממירה את כל יצירות התמונה ליצירת תמונה משרת ולא מספרייה
+		        function preparImg(ImgPlace) {
+		            var img = new Image();
+		            img.src = ImgPlace;
+		            var bmp = new createjs.Bitmap(img).set({ scaleX: 0.5, scaleY: 0.5 });
+		            return bmp
+		            console.log("imeg prepard");
+		        }
 	}
 
 	// actions tween:
@@ -5598,13 +5906,14 @@ lib.properties = {
 	color: "#FFFFFF",
 	opacity: 1.00,
 	manifest: [
-		{src:"images/wintSecoundSemester_atlas_1.png?1657196195968", id:"wintSecoundSemester_atlas_1"},
-		{src:"images/wintSecoundSemester_atlas_2.png?1657196195968", id:"wintSecoundSemester_atlas_2"},
-		{src:"images/wintSecoundSemester_atlas_3.png?1657196195969", id:"wintSecoundSemester_atlas_3"},
-		{src:"https://code.jquery.com/jquery-3.4.1.min.js?1657196196172", id:"lib/jquery-3.4.1.min.js"},
-		{src:"components/sdk/anwidget.js?1657196196172", id:"sdk/anwidget.js"},
-		{src:"components/ui/src/combobox.js?1657196196172", id:"an.ComboBox"},
-		{src:"components/ui/src/combobox.js?1657196196172", id:"an.ComboBox"}
+		{src:"images/wintSecoundSemester_atlas_1.png?1657198846495", id:"wintSecoundSemester_atlas_1"},
+		{src:"images/wintSecoundSemester_atlas_2.png?1657198846495", id:"wintSecoundSemester_atlas_2"},
+		{src:"images/wintSecoundSemester_atlas_3.png?1657198846495", id:"wintSecoundSemester_atlas_3"},
+		{src:"https://code.jquery.com/jquery-3.4.1.min.js?1657198846705", id:"lib/jquery-3.4.1.min.js"},
+		{src:"components/sdk/anwidget.js?1657198846705", id:"sdk/anwidget.js"},
+		{src:"components/ui/src/textinput.js?1657198846705", id:"an.TextInput"},
+		{src:"components/ui/src/combobox.js?1657198846705", id:"an.ComboBox"},
+		{src:"components/ui/src/combobox.js?1657198846705", id:"an.ComboBox"}
 	],
 	preloads: []
 };
