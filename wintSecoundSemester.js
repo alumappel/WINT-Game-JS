@@ -29,49 +29,49 @@ lib.ssMetadata = [
 
 
 
-(lib.CachedBmp_35 = function() {
+(lib.CachedBmp_7 = function() {
 	this.initialize(ss["wintSecoundSemester_atlas_1"]);
 	this.gotoAndStop(0);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.CachedBmp_34 = function() {
+(lib.CachedBmp_6 = function() {
 	this.initialize(ss["wintSecoundSemester_atlas_1"]);
 	this.gotoAndStop(1);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.CachedBmp_33 = function() {
+(lib.CachedBmp_5 = function() {
 	this.initialize(ss["wintSecoundSemester_atlas_1"]);
 	this.gotoAndStop(2);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.CachedBmp_32 = function() {
+(lib.CachedBmp_4 = function() {
 	this.initialize(ss["wintSecoundSemester_atlas_1"]);
 	this.gotoAndStop(3);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.CachedBmp_31 = function() {
+(lib.CachedBmp_3 = function() {
 	this.initialize(ss["wintSecoundSemester_atlas_1"]);
 	this.gotoAndStop(4);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.CachedBmp_30 = function() {
+(lib.CachedBmp_2 = function() {
 	this.initialize(ss["wintSecoundSemester_atlas_1"]);
 	this.gotoAndStop(5);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.CachedBmp_29 = function() {
+(lib.CachedBmp_1 = function() {
 	this.initialize(ss["wintSecoundSemester_atlas_1"]);
 	this.gotoAndStop(6);
 }).prototype = p = new cjs.Sprite();
@@ -995,7 +995,7 @@ if (reversed == null) { reversed = false; }
 	cjs.MovieClip.apply(this,[props]);
 
 	// Layer_1
-	this.instance = new lib.CachedBmp_35();
+	this.instance = new lib.CachedBmp_7();
 	this.instance.setTransform(0,0,0.5,0.5);
 
 	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
@@ -1124,7 +1124,7 @@ if (reversed == null) { reversed = false; }
 	cjs.MovieClip.apply(this,[props]);
 
 	// Layer_1
-	this.instance = new lib.CachedBmp_34();
+	this.instance = new lib.CachedBmp_6();
 	this.instance.setTransform(17,-8,0.5,0.5);
 
 	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
@@ -1224,7 +1224,7 @@ if (reversed == null) { reversed = false; }
 	cjs.MovieClip.apply(this,[props]);
 
 	// Layer_1
-	this.instance = new lib.CachedBmp_33();
+	this.instance = new lib.CachedBmp_5();
 	this.instance.setTransform(0,0,0.5,0.5);
 
 	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
@@ -1341,7 +1341,7 @@ if (reversed == null) { reversed = false; }
 	cjs.MovieClip.apply(this,[props]);
 
 	// Layer_1
-	this.instance = new lib.CachedBmp_32();
+	this.instance = new lib.CachedBmp_4();
 	this.instance.setTransform(0,-12,0.5,0.5);
 
 	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
@@ -1363,7 +1363,7 @@ if (reversed == null) { reversed = false; }
 	cjs.MovieClip.apply(this,[props]);
 
 	// Layer_1
-	this.instance = new lib.CachedBmp_31();
+	this.instance = new lib.CachedBmp_3();
 	this.instance.setTransform(0,0,0.5,0.5);
 
 	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
@@ -3656,7 +3656,7 @@ if (reversed == null) { reversed = false; }
 	this.instance_1 = new lib.worngCircel("synched",0);
 	this.instance_1.setTransform(297.4,218.7,0.68,0.68,0,0,0,25.2,25.1);
 
-	this.instance_2 = new lib.CachedBmp_30();
+	this.instance_2 = new lib.CachedBmp_2();
 	this.instance_2.setTransform(163.8,201.65,0.5,0.5);
 
 	this.instance_3 = new lib.secndart_no_shadow();
@@ -3678,7 +3678,7 @@ if (reversed == null) { reversed = false; }
 	this.BackgroundEnd.name = "BackgroundEnd";
 	this.BackgroundEnd.setTransform(640,360,1,1,0,0,0,640,360);
 
-	this.instance_8 = new lib.CachedBmp_29();
+	this.instance_8 = new lib.CachedBmp_1();
 	this.instance_8.setTransform(368.3,305.55,0.5,0.5);
 
 	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance}]}).to({state:[{t:this.BackgroundOpen}]},1).to({state:[{t:this.BackgroundQue}]},1).to({state:[{t:this.instance_8},{t:this.BackgroundEnd},{t:this.instance_7},{t:this.instance_6},{t:this.instance_5},{t:this.instance_4},{t:this.instance_3},{t:this.instance_2},{t:this.instance_1}]},1).wait(1));
@@ -4287,7 +4287,7 @@ if (reversed == null) { reversed = false; }
 		
 		                //טקסט לכפתור
 		                var startTxt = new createjs.Text();
-		                cont.addChild(startTxt);
+						cont.addChild(startTxt);
 		                startTxt.color = "#291A08";
 		                startTxt.font = "30px Rubik Regular";
 		                startTxt.x = 920;
@@ -4762,34 +4762,7 @@ if (reversed == null) { reversed = false; }
 		
 		                stage.getChildByName("MainBackground").gotoAndStop(2);
 		
-		
-		
-		                //יצירת תיבת שאלה
-		                var QTxt = new createjs.Text();
-		                cont.addChild(QTxt);
-		                QTxt.color = "#291A08";
-		                QTxt.font = "27px Rubik Regular";
-		                QTxt.x = 1250;
-		                QTxt.y = 220;
-		                QTxt.textAlign = "right";
-		                QTxt.lineHeight = 30;
-		                QTxt.lineWidth = 286;
-		                QTxt.text = "איספו בעזרת תנועת חיצים אל תוך ההבלנדר את כל התפוחים שעליהם " + AllTheContent[GameNum][0][1];
-		                QTxt.name = "QTxt";
-		                cont.getChildByName("QTxt").alpha = 0;
-		                //במידה ויש תמונה
-		                if (AllTheContent[GameNum][0][2] != "text") {
-		                    var QphotoSmall = new AllTheContent[GameNum][0][3]();
-		                    cont.addChild(QphotoSmall);
-		                    QphotoSmall.x = 1060;
-		                    QphotoSmall.y = 290;
-		                    QphotoSmall.name = "QphotoSmall";
-		                    QTxt.font = "20px Rubik Regular";
-		                    QTxt.lineHeight = 23;
-		                    cont.getChildByName("QphotoSmall").alpha = 0;
-		                    cont.getChildByName("QphotoSmall").addEventListener("click", scalePhoto);
-		
-		                }
+		                
 		
 		                //יצירת כפתור השהייה
 		                var stopButton = new lib.stopBtn();
@@ -4855,8 +4828,7 @@ if (reversed == null) { reversed = false; }
 		                        var myPhotoBound = myPhoto.nominalBounds;
 		                        myPhoto.x = (myAppleBound.width / 2 - myPhotoBound.width / 2 - 5);
 		                        myPhoto.y = (myAppleBound.height / 2 - myPhotoBound.height / 2);
-		                        myPhoto.name = "myAppleTxt" + i;
-		                        myPhoto.addEventListener("click", scalePhoto);
+		                        myPhoto.name = "myAppleTxt" ;                     
 		
 		                    }
 		
@@ -4883,7 +4855,7 @@ if (reversed == null) { reversed = false; }
 		                            myAppleTxt.x = (myAppleBound.width / 2 - 5);
 		                            myAppleTxt.y = (myAppleBound.height / 2 - 10);
 		                        }
-		                        myAppleTxt.name = "myAppleTxt" + i;
+		                        myAppleTxt.name = "myAppleTxt";
 		                    }
 		                }
 		
@@ -4924,6 +4896,34 @@ if (reversed == null) { reversed = false; }
 		                //FreedbackKid.y = 760;
 		                FreedbackKid.gotoAndStop(1);
 		                FreedbackKid.name = "FreedbackKid";
+						
+						
+						//יצירת תיבת שאלה
+		                var QTxt = new createjs.Text();
+		                cont.addChild(QTxt);
+		                QTxt.color = "#291A08";
+		                QTxt.font = "27px Rubik Regular";
+		                QTxt.x = 1250;
+		                QTxt.y = 220;
+		                QTxt.textAlign = "right";
+		                QTxt.lineHeight = 30;
+		                QTxt.lineWidth = 286;
+		                QTxt.text = "איספו בעזרת תנועת חיצים אל תוך ההבלנדר את כל התפוחים שעליהם " + AllTheContent[GameNum][0][1];
+		                QTxt.name = "QTxt";
+		                cont.getChildByName("QTxt").alpha = 0;
+		                //במידה ויש תמונה
+		                if (AllTheContent[GameNum][0][2] != "text") {
+		                    var QphotoSmall = new AllTheContent[GameNum][0][3]();
+		                    cont.addChild(QphotoSmall);
+		                    QphotoSmall.x = 1060;
+		                    QphotoSmall.y = 290;
+		                    QphotoSmall.name = "QphotoSmall";
+		                    QTxt.font = "20px Rubik Regular";
+		                    QTxt.lineHeight = 23;
+		                    cont.getChildByName("QphotoSmall").alpha = 0;
+		                    cont.getChildByName("QphotoSmall").addEventListener("click", scalePhoto);
+		                }
+						
 		
 		
 		                //יצירת מאזינים לחצים
@@ -4963,7 +4963,7 @@ if (reversed == null) { reversed = false; }
 		            function startGame() {
 		                chooseApple();                
 		                if (AppelStops == false) {
-		                    cont1.getChildByName("myApple" + choosenApple).alpha = 1;                    
+		                    cont1.getChildByName("myApple" + choosenApple).alpha = 1;  					
 		                    //גורם לדברים לזוז
 		                    createjs.Ticker.addEventListener("tick", mytickfunction);
 		                }
@@ -4984,9 +4984,11 @@ if (reversed == null) { reversed = false; }
 		                    directionX = "right";
 		                }
 		                //רווח
+					//במידה ויש לתפוח תמונה קורה להגדלה
 		                if (evt.keyCode == 32) {
-		                    directionX = "";
-		
+							if (AllTheContent[GameNum][choosenApple][2] == "imeg"){
+		                  scalePhotoSpace();
+							}
 		                }
 		            }
 		
@@ -5830,14 +5832,47 @@ if (reversed == null) { reversed = false; }
 		
 		            //מגדיל ומקטין תמונה בלחיצה עליה
 		            function scalePhoto(evt) {
+					var Oscale=evt.currentTarget.scale;
+					var evtNominal=	evt.currentTarget.getBounds ();	
+					var XPlace=evt.currentTarget.x;
+					var XPlaceChange=	evt.currentTarget.x- evtNominal.width/2;
+					var YPlace=evt.currentTarget.y;
+					var YPlaceChange=	evt.currentTarget.y- evtNominal.height/2;
 		                createjs.Tween.get(evt.currentTarget).to({
-		                    scaleX: 2,
-		                    scaleY: 2
-		                }, 500).wait(700).to({
-		                    scaleX: 1.0,
-		                    scaleY: 1.0
-		                }, 500);
+		                   x:XPlaceChange,
+							y:YPlaceChange,
+							scale: 2*Oscale                   
+		                }
+					, 500).wait(700).to({
+						x:XPlace,
+						y:YPlace,
+		                    scale: Oscale                    
+		                }, 500);					
 		            }
+				
+				
+				 //מגדיל ומקטין תמונה בלחיצה על רווח לתפוחים במהלך משחק
+		            function scalePhotoSpace() {					
+					var target=cont1.getChildByName("myApple" + choosenApple).getChildByName("myAppleTxt" );				
+					var Oscale=target.scale;
+					var evtNominal=		target.nominalBounds;				
+					var XPlace=target.x;
+					var XPlaceChange=	target.x- evtNominal.width/2;
+					var YPlace=target.y;
+					var YPlaceChange=	target.y- evtNominal.height/2;
+		                createjs.Tween.get(target).to({
+		                   x:XPlaceChange,
+							y:YPlaceChange,
+							scale: 2*Oscale                   
+		                }
+					, 500).wait(100).to({
+						x:XPlace,
+						y:YPlace,
+		                    scale: Oscale                    
+		                }, 500);					
+		            }
+				
+		
 		
 		
 		            //האוור לכפתורים
@@ -5906,14 +5941,14 @@ lib.properties = {
 	color: "#FFFFFF",
 	opacity: 1.00,
 	manifest: [
-		{src:"images/wintSecoundSemester_atlas_1.png?1657201175084", id:"wintSecoundSemester_atlas_1"},
-		{src:"images/wintSecoundSemester_atlas_2.png?1657201175084", id:"wintSecoundSemester_atlas_2"},
-		{src:"images/wintSecoundSemester_atlas_3.png?1657201175084", id:"wintSecoundSemester_atlas_3"},
-		{src:"https://code.jquery.com/jquery-3.4.1.min.js?1657201175322", id:"lib/jquery-3.4.1.min.js"},
-		{src:"components/sdk/anwidget.js?1657201175322", id:"sdk/anwidget.js"},
-		{src:"components/ui/src/textinput.js?1657201175322", id:"an.TextInput"},
-		{src:"components/ui/src/combobox.js?1657201175322", id:"an.ComboBox"},
-		{src:"components/ui/src/combobox.js?1657201175322", id:"an.ComboBox"}
+		{src:"images/wintSecoundSemester_atlas_1.png?1657466083715", id:"wintSecoundSemester_atlas_1"},
+		{src:"images/wintSecoundSemester_atlas_2.png?1657466083715", id:"wintSecoundSemester_atlas_2"},
+		{src:"images/wintSecoundSemester_atlas_3.png?1657466083715", id:"wintSecoundSemester_atlas_3"},
+		{src:"https://code.jquery.com/jquery-3.4.1.min.js?1657466083914", id:"lib/jquery-3.4.1.min.js"},
+		{src:"components/sdk/anwidget.js?1657466083914", id:"sdk/anwidget.js"},
+		{src:"components/ui/src/textinput.js?1657466083914", id:"an.TextInput"},
+		{src:"components/ui/src/combobox.js?1657466083914", id:"an.ComboBox"},
+		{src:"components/ui/src/combobox.js?1657466083914", id:"an.ComboBox"}
 	],
 	preloads: []
 };
