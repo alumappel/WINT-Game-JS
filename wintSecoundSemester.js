@@ -4289,7 +4289,7 @@ if (reversed == null) { reversed = false; }
 		                var startTxt = new createjs.Text();
 						cont.addChild(startTxt);
 		                startTxt.color = "#291A08";
-		                startTxt.font = "30px Rubik Regular";
+		                startTxt.font = "30px Gisha";
 		                startTxt.x = 920;
 		                startTxt.y = 550;
 		                startTxt.textAlign = "central ";
@@ -4324,9 +4324,9 @@ if (reversed == null) { reversed = false; }
 		        comboBG.x = 600;
 		        stage.addChild(comboBG);
 				comboBG.WhatToDoText.color = "#291A08";
-				comboBG.WhatToDoText.font = "24px Rubik Regular";
+				comboBG.WhatToDoText.font = "24px Gisha";
 				comboBG.WhatToDoText1.color = "#291A08";
-				comboBG.WhatToDoText1.font = "16px Rubik Regular";
+				comboBG.WhatToDoText1.font = "16px Gisha";
 		
 		        var forcombo = new lib.forcomb();
 		        forcombo.x = 925;
@@ -4334,7 +4334,7 @@ if (reversed == null) { reversed = false; }
 		        stage.addChild(forcombo);
 		        forcombo.scale = 0.5;
 				forcombo.responeTxt.color = "#A0191B";
-				forcombo.responeTxt.font = "28px Rubik Regular";
+				forcombo.responeTxt.font = "28px Gisha";
 				forcombo.name="forcombo1";
 		        $("#dom_overlay_container").on("keyup", "#gameCode_txt", codeInput_change);
 				
@@ -4353,7 +4353,7 @@ if (reversed == null) { reversed = false; }
 		                var startTxt = new createjs.Text();
 		                cont.addChild(startTxt);
 		                startTxt.color = "#291A08";
-		                startTxt.font = "30px Rubik Regular";
+		                startTxt.font = "30px Gisha";
 		                startTxt.x = 920;
 		                startTxt.y = 550;
 		                startTxt.textAlign = "central ";
@@ -4533,7 +4533,7 @@ if (reversed == null) { reversed = false; }
 		                var storyTxt = new createjs.Text();
 		                cont.addChild(storyTxt);
 		                storyTxt.color = "#291A08";
-		                storyTxt.font = "20px Rubik Regular";
+		                storyTxt.font = "20px Gisha";
 		                storyTxt.x = 1110;
 		                storyTxt.y = 235;
 		                storyTxt.textAlign = "right";
@@ -4547,7 +4547,7 @@ if (reversed == null) { reversed = false; }
 		                var subTxt = new createjs.Text();
 		                cont.addChild(subTxt);
 		                subTxt.color = "#291A08";
-		                subTxt.font = "30px Rubik Regular";
+		                subTxt.font = "30px Gisha";
 		                subTxt.x = 1085;
 		                subTxt.y = 102;
 		                subTxt.textAlign = "center";
@@ -4572,7 +4572,7 @@ if (reversed == null) { reversed = false; }
 		                var startGameTxt = new createjs.Text();
 		                cont.addChild(startGameTxt);
 		                startGameTxt.color = "#291A08";
-		                startGameTxt.font = "30px Rubik Regular";
+		                startGameTxt.font = "30px Gisha";
 		                startGameTxt.x = 920;
 		                startGameTxt.y = 550;
 		                startGameTxt.textAlign = "central ";
@@ -4634,7 +4634,7 @@ if (reversed == null) { reversed = false; }
 		                var QTxt_big = new createjs.Text();
 		                cont.addChild(QTxt_big);
 		                QTxt_big.color = "#291A08";
-		                QTxt_big.font = "27px Rubik Regular";
+		                QTxt_big.font = "27px Gisha";
 		                QTxt_big.x = 620;
 		                QTxt_big.y = 260;
 		                QTxt_big.textAlign = "center";
@@ -4659,7 +4659,7 @@ if (reversed == null) { reversed = false; }
 		                var startGameTxt = new createjs.Text();
 		                cont.addChild(startGameTxt);
 		                startGameTxt.color = "#291A08";
-		                startGameTxt.font = "30px Rubik Regular";
+		                startGameTxt.font = "30px Gisha";
 		                startGameTxt.x = 630;
 		                startGameTxt.y = 495;
 		                startGameTxt.textAlign = "center";
@@ -4839,7 +4839,7 @@ if (reversed == null) { reversed = false; }
 		                        myAppleTxt.text = (AllTheContent[GameNum][i][0]);
 		                        if (myAppleTxt.text.length > 8) {
 		                            myAppleTxt.color = "#291A08";
-		                            myAppleTxt.font = "20px Rubik Regular";
+		                            myAppleTxt.font = "20px Gisha";
 		                            myAppleTxt.textAlign = "right";
 		                            myAppleTxt.lineHeight = 22;
 		                            myAppleTxt.lineWidth = 50;
@@ -4848,7 +4848,7 @@ if (reversed == null) { reversed = false; }
 		                        }
 		                        else {
 		                            myAppleTxt.color = "#291A08";
-		                            myAppleTxt.font = "27px Rubik Regular";
+		                            myAppleTxt.font = "27px Gisha";
 		                            myAppleTxt.textAlign = "center";
 		                            myAppleTxt.lineHeight = 27;
 		                            myAppleTxt.lineWidth = 50;
@@ -4879,7 +4879,7 @@ if (reversed == null) { reversed = false; }
 		                var ansGageTxt = new createjs.Text();
 		                Basket.addChild(ansGageTxt);
 		                ansGageTxt.color = "#291A08";
-		                ansGageTxt.font = "20px Rubik Regular";
+		                ansGageTxt.font = "20px Gisha";
 		                ansGageTxt.textAlign = "center";
 		                ansGageTxt.x = 80;
 		                ansGageTxt.y = -40;
@@ -4902,7 +4902,7 @@ if (reversed == null) { reversed = false; }
 		                var QTxt = new createjs.Text();
 		                cont.addChild(QTxt);
 		                QTxt.color = "#291A08";
-		                QTxt.font = "27px Rubik Regular";
+		                QTxt.font = "27px Gisha";
 		                QTxt.x = 1250;
 		                QTxt.y = 220;
 		                QTxt.textAlign = "right";
@@ -4918,7 +4918,7 @@ if (reversed == null) { reversed = false; }
 		                    QphotoSmall.x = 1060;
 		                    QphotoSmall.y = 290;
 		                    QphotoSmall.name = "QphotoSmall";
-		                    QTxt.font = "20px Rubik Regular";
+		                    QTxt.font = "20px Gisha";
 		                    QTxt.lineHeight = 23;
 		                    cont.getChildByName("QphotoSmall").alpha = 0;
 		                    cont.getChildByName("QphotoSmall").addEventListener("click", scalePhoto);
@@ -5205,7 +5205,7 @@ if (reversed == null) { reversed = false; }
 		                var pauseTxt = new createjs.Text();
 		                cont2.addChild(pauseTxt);
 		                pauseTxt.color = "#291A08";
-		                pauseTxt.font = "27px Rubik Regular";
+		                pauseTxt.font = "27px Gisha";
 		                pauseTxt.x = 620;
 		                pauseTxt.y = 280;
 		                pauseTxt.textAlign = "center";
@@ -5230,7 +5230,7 @@ if (reversed == null) { reversed = false; }
 		                var pauseButtonTxt = new createjs.Text();
 		                cont2.addChild(pauseButtonTxt);
 		                pauseButtonTxt.color = "#291A08";
-		                pauseButtonTxt.font = "30px Rubik Regular";
+		                pauseButtonTxt.font = "30px Gisha";
 		                pauseButtonTxt.x = 630;
 		                pauseButtonTxt.y = 415;
 		                pauseButtonTxt.textAlign = "center";
@@ -5339,7 +5339,7 @@ if (reversed == null) { reversed = false; }
 		                var subTxt = new createjs.Text();
 		                cont.addChild(subTxt);
 		                subTxt.color = "#291A08";
-		                subTxt.font = "30px Rubik Regular";
+		                subTxt.font = "30px Gisha";
 		                subTxt.x = 1085;
 		                subTxt.y = 102;
 		                subTxt.textAlign = "center";
@@ -5393,7 +5393,7 @@ if (reversed == null) { reversed = false; }
 		                var QTxt = new createjs.Text();
 		                cont.addChild(QTxt);
 		                QTxt.color = "#291A08";
-		                QTxt.font = "27px Rubik Regular";
+		                QTxt.font = "27px Gisha";
 		                QTxt.x = 770;
 		                QTxt.y = 120;
 		                QTxt.textAlign = "right";
@@ -5410,7 +5410,7 @@ if (reversed == null) { reversed = false; }
 		                    QphotoSmall.x = 160;
 		                    QphotoSmall.y = 120;
 		                    QphotoSmall.name = "QphotoSmall";
-		                    QTxt.font = "20px Rubik Regular";
+		                    QTxt.font = "20px Gisha";
 		                    QTxt.lineHeight = 23;
 		                    cont.getChildByName("QphotoSmall").addEventListener("click", scalePhoto);
 		
@@ -5420,7 +5420,7 @@ if (reversed == null) { reversed = false; }
 		                var varTxt = new createjs.Text();
 		                cont.addChild(varTxt);
 		                varTxt.color = "#291A08";
-		                varTxt.font = "25px Rubik Regular";
+		                varTxt.font = "25px Gisha";
 		                varTxt.x = 1110;
 		                varTxt.y = 235;
 		                varTxt.textAlign = "right";
@@ -5431,7 +5431,7 @@ if (reversed == null) { reversed = false; }
 		                var varTxt = new createjs.Text();
 		                cont.addChild(varTxt);
 		                varTxt.color = "#291A08";
-		                varTxt.font = "25px Rubik Regular";
+		                varTxt.font = "25px Gisha";
 		                varTxt.x = 1168;
 		                varTxt.y = 310;
 		                varTxt.textAlign = "right";
@@ -5442,7 +5442,7 @@ if (reversed == null) { reversed = false; }
 		                var varTxt = new createjs.Text();
 		                cont.addChild(varTxt);
 		                varTxt.color = "#291A08";
-		                varTxt.font = "25px Rubik Regular";
+		                varTxt.font = "25px Gisha";
 		                varTxt.x = 1120;
 		                varTxt.y = 382;
 		                varTxt.textAlign = "right";
@@ -5465,7 +5465,7 @@ if (reversed == null) { reversed = false; }
 		                var varTxt = new createjs.Text();
 		                cont.addChild(varTxt);
 		                varTxt.color = "#291A08";
-		                varTxt.font = "25px Rubik Regular";
+		                varTxt.font = "25px Gisha";
 		                varTxt.x = 1125;
 		                varTxt.y = 517;
 		                varTxt.textAlign = "right";
@@ -5488,7 +5488,7 @@ if (reversed == null) { reversed = false; }
 		                var varTxt = new createjs.Text();
 		                cont.addChild(varTxt);
 		                varTxt.color = "#291A08";
-		                varTxt.font = "25px Rubik Regular";
+		                varTxt.font = "25px Gisha";
 		                varTxt.x = 1145;
 		                varTxt.y = 587;
 		                varTxt.textAlign = "right";
@@ -5627,7 +5627,7 @@ if (reversed == null) { reversed = false; }
 		                        myAppleTxt.text = (AllTheContent[GameNum][i][0]);
 		                        if (myAppleTxt.text.length > 8) {
 		                            myAppleTxt.color = "#291A08";
-		                            myAppleTxt.font = "20px Rubik Regular";
+		                            myAppleTxt.font = "20px Gisha";
 		                            myAppleTxt.textAlign = "right";
 		                            myAppleTxt.lineHeight = 22;
 		                            myAppleTxt.lineWidth = 50;
@@ -5636,7 +5636,7 @@ if (reversed == null) { reversed = false; }
 		                        }
 		                        else {
 		                            myAppleTxt.color = "#291A08";
-		                            myAppleTxt.font = "27px Rubik Regular";
+		                            myAppleTxt.font = "27px Gisha";
 		                            myAppleTxt.textAlign = "center";
 		                            myAppleTxt.lineHeight = 27;
 		                            myAppleTxt.lineWidth = 50;
@@ -5682,7 +5682,7 @@ if (reversed == null) { reversed = false; }
 		                var subTxt = new createjs.Text();
 		                cont.addChild(subTxt);
 		                subTxt.color = "#291A08";
-		                subTxt.font = "30px Rubik Regular";
+		                subTxt.font = "30px Gisha";
 		                subTxt.x = 1085;
 		                subTxt.y = 102;
 		                subTxt.textAlign = "center";
@@ -5941,14 +5941,14 @@ lib.properties = {
 	color: "#FFFFFF",
 	opacity: 1.00,
 	manifest: [
-		{src:"images/wintSecoundSemester_atlas_1.png?1657466083715", id:"wintSecoundSemester_atlas_1"},
-		{src:"images/wintSecoundSemester_atlas_2.png?1657466083715", id:"wintSecoundSemester_atlas_2"},
-		{src:"images/wintSecoundSemester_atlas_3.png?1657466083715", id:"wintSecoundSemester_atlas_3"},
-		{src:"https://code.jquery.com/jquery-3.4.1.min.js?1657466083914", id:"lib/jquery-3.4.1.min.js"},
-		{src:"components/sdk/anwidget.js?1657466083914", id:"sdk/anwidget.js"},
-		{src:"components/ui/src/textinput.js?1657466083914", id:"an.TextInput"},
-		{src:"components/ui/src/combobox.js?1657466083914", id:"an.ComboBox"},
-		{src:"components/ui/src/combobox.js?1657466083914", id:"an.ComboBox"}
+		{src:"images/wintSecoundSemester_atlas_1.png?1657479880516", id:"wintSecoundSemester_atlas_1"},
+		{src:"images/wintSecoundSemester_atlas_2.png?1657479880516", id:"wintSecoundSemester_atlas_2"},
+		{src:"images/wintSecoundSemester_atlas_3.png?1657479880516", id:"wintSecoundSemester_atlas_3"},
+		{src:"https://code.jquery.com/jquery-3.4.1.min.js?1657479880778", id:"lib/jquery-3.4.1.min.js"},
+		{src:"components/sdk/anwidget.js?1657479880778", id:"sdk/anwidget.js"},
+		{src:"components/ui/src/textinput.js?1657479880778", id:"an.TextInput"},
+		{src:"components/ui/src/combobox.js?1657479880778", id:"an.ComboBox"},
+		{src:"components/ui/src/combobox.js?1657479880778", id:"an.ComboBox"}
 	],
 	preloads: []
 };
