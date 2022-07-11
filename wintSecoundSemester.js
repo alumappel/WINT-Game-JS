@@ -4249,16 +4249,17 @@ if (reversed == null) { reversed = false; }
 					///למחולל
 					//CreatopenScreen1();
 					
-					  init_sound();        
+					 init_sound();        
 		
 		
 		            ////-----נסטיה עד פה הערה
 		
 		            //מפעיל ישירות למשח משחק
-		 /*           GameNum = 1;
+		  /*    GameNum = 1;
 		            CreatGameBoard();
 		            forInterval = setInterval(checkNotPlayed, 1000);
-		            startGameFirstTime();*/
+		            startGameFirstTime();
+					*/
 		            //////
 		
 		            
@@ -4281,6 +4282,7 @@ if (reversed == null) { reversed = false; }
 		                CTA_normal.x = 900;
 		                CTA_normal.y = 520;
 		                CTA_normal.stop();
+						CTA_normal.cursor = "pointer";
 		                CTA_normal.name = "enterButton";
 		                cont.getChildByName("enterButton").gotoAndStop(2)
 		
@@ -4346,6 +4348,7 @@ if (reversed == null) { reversed = false; }
 		                CTA_normal.y = 520;
 		                CTA_normal.stop();
 		                CTA_normal.name = "enterButton";
+						CTA_normal.cursor = "pointer";
 		                cont.getChildByName("enterButton").gotoAndStop(2)
 		
 		
@@ -4561,6 +4564,7 @@ if (reversed == null) { reversed = false; }
 		                CTA_normal.x = 900;
 		                CTA_normal.y = 520;
 		                CTA_normal.stop();
+						CTA_normal.cursor = "pointer";
 		                CTA_normal.name = "startButton";
 		                cont.getChildByName("startButton").gotoAndStop(0)
 		                cont.getChildByName("startButton").addEventListener("click", startButtonFunc);
@@ -4649,6 +4653,7 @@ if (reversed == null) { reversed = false; }
 		                secendertButton.x = 530;
 		                secendertButton.y = 480;
 		                secendertButton.stop();
+						secendertButton.cursor = "pointer";
 		                secendertButton.name = "startButton2";
 		                cont.getChildByName("startButton2").gotoAndStop(0)
 		                cont.getChildByName("startButton2").addEventListener("click", startButtonFunc2);
@@ -4672,6 +4677,7 @@ if (reversed == null) { reversed = false; }
 		                    cont.addChild(Qphoto);
 		                    Qphoto.x = 565;
 		                    Qphoto.y = 350;
+							Qphoto.cursor = "pointer";
 		                    Qphoto.name = "Qphoto";
 		                    cont.getChildByName("Qphoto").addEventListener("click", scalePhoto);
 		
@@ -4769,6 +4775,7 @@ if (reversed == null) { reversed = false; }
 		                cont.addChild(stopButton);
 		                stopButton.x = 1130;
 		                stopButton.y = 425;
+						stopButton.cursor = "pointer";
 		                stopButton.name = "stopButton";
 		                getstopButton = cont.getChildByName("stopButton");
 		                getstopButton.gotoAndStop(2);
@@ -4779,6 +4786,7 @@ if (reversed == null) { reversed = false; }
 		                cont.addChild(muteButton);
 		                muteButton.x = 1170;
 		                muteButton.y = 650;
+						muteButton.cursor = "pointer";
 		                muteButton.name = "muteButton";
 		                cont.getChildByName("muteButton").addEventListener("click", MuteGame);
 		                if (isMuted == false) {
@@ -4804,6 +4812,7 @@ if (reversed == null) { reversed = false; }
 		                    cont.addChild(detctive);
 		                    detctive.x = 1159.95;
 		                    detctive.y = detctiveY[i - 1] + 189.95;
+							detctive.cursor = "pointer";
 		                    detctive.name = "speed_detctive" + i;
 		                    cont.getChildByName("speed_detctive" + i).addEventListener("click", speedControl);
 		                    cont.getChildByName("speed_detctive" + i).alpha = 0.1;
@@ -4917,6 +4926,7 @@ if (reversed == null) { reversed = false; }
 		                    cont.addChild(QphotoSmall);
 		                    QphotoSmall.x = 1060;
 		                    QphotoSmall.y = 290;
+							QphotoSmall.cursor = "pointer";
 		                    QphotoSmall.name = "QphotoSmall";
 		                    QTxt.font = "20px Gisha";
 		                    QTxt.lineHeight = 23;
@@ -5026,7 +5036,7 @@ if (reversed == null) { reversed = false; }
 		                        AppelInBasket(true);
 		                    }
 		                    //החלק התחתון של התפוח מתחת לחלק התחתון של איזור הפגיעה
-		                    if (cont1.getChildByName("myApple" + choosenApple).y +165>= 540.4+(-28.9)+144.7) {
+		                  else  if (cont1.getChildByName("myApple" + choosenApple).y +165>= 540.4+(-28.9)+144.7) {
 		                        AppelInBasket(false);                       
 		                        }
 		                    }
@@ -5067,10 +5077,14 @@ if (reversed == null) { reversed = false; }
 		                        if (isMuted == false) {
 		                            goodSound = createjs.Sound.play("rightSound");
 		                        }
+							
+							//אנימצייה לתפוח
+							AppelUpAndDownTrue();
+							
 		                        //אנימצייה
 		                        cont2.getChildByName("FreedbackKid").gotoAndPlay(1);
 		                        //המתנה וקריאה לפונקציה שמעלימה וומשיכה 
-		                        myTimeout = setTimeout(continuedRight, 2000);
+		                        myTimeout = setTimeout(continuedRight, 3500);
 		                    }
 		                    //אם פגע ושגוי
 		                    else {
@@ -5087,11 +5101,14 @@ if (reversed == null) { reversed = false; }
 		                        if (isMuted == false) {
 		                            badSound = createjs.Sound.play("worngSound");
 		                        }
+							//אנימצייה לתפוח
+						AppelUpAndDownFalse();
+							
 		                        //אנימצייה
 		                        cont2.getChildByName("FreedbackKid").gotoAndPlay(56);
 		                        //המתנה והעלמת תפוח
 		                        myTimeout = setTimeout(continuedWorng, 2000);
-		                    }
+		                    }				
 		                }
 		                //אם לא פגע
 		                else {
@@ -5111,6 +5128,10 @@ if (reversed == null) { reversed = false; }
 		                        if (isMuted == false) {
 		                            badSound = createjs.Sound.play("worngSound");
 		                        }
+							
+							//אנימצייה לתפוח
+							AppelUpAndDownFalse2();
+							
 		                        //אנימצייה
 		                        cont2.getChildByName("FreedbackKid").gotoAndPlay(56);
 		                        //המתנה והעלמת תפוח
@@ -5219,6 +5240,7 @@ if (reversed == null) { reversed = false; }
 		                cont2.addChild(pausesecendertButton);
 		                pausesecendertButton.x = 530;
 		                pausesecendertButton.y = 400;
+						pausesecendertButton.cursor = "pointer";
 		                pausesecendertButton.stop();
 		                pausesecendertButton.name = "pausesecendertButton";
 		                cont2.getChildByName("pausesecendertButton").gotoAndStop(0)
@@ -5359,6 +5381,7 @@ if (reversed == null) { reversed = false; }
 		                cont.addChild(muteButton);
 		                muteButton.x = 55;
 		                muteButton.y = 100;
+						 muteButton.cursor = "pointer";
 		                muteButton.name = "muteButton";
 		                cont.getChildByName("muteButton").addEventListener("click", MuteGame);
 		                if (isMuted == false) {
@@ -5454,6 +5477,7 @@ if (reversed == null) { reversed = false; }
 		                cont.addChild(secendertButton);
 		                secendertButton.x = 975;
 		                secendertButton.y = 500;
+						secendertButton.cursor = "pointer";
 		                secendertButton.stop();
 		                secendertButton.name = "startagain";
 		                cont.getChildByName("startagain").gotoAndStop(0)
@@ -5477,6 +5501,7 @@ if (reversed == null) { reversed = false; }
 		                cont.addChild(secendertButton);
 		                secendertButton.x = 975;
 		                secendertButton.y = 570;
+						secendertButton.cursor = "pointer";
 		                secendertButton.stop();
 		                secendertButton.name = "toTheStart";
 		                cont.getChildByName("toTheStart").gotoAndStop(0)
@@ -5525,6 +5550,7 @@ if (reversed == null) { reversed = false; }
 		                cont.addChild(mythumb);
 		                mythumb.x = 850;
 		                mythumb.y = 350;
+						 mythumb.cursor = "pointer";
 		                mythumb.addEventListener('mousedown', startdragF);
 		
 		                //משתנים לחישוב הגלילה
@@ -5616,6 +5642,7 @@ if (reversed == null) { reversed = false; }
 		                        move.addChild(myPhoto);
 		                        myPhoto.x = move.getChildByName("myApple" + i).x + 20;
 		                        myPhoto.y = move.getChildByName("myApple" + i).y + 10 + 40;
+								myPhoto.cursor = "pointer";
 		                        myPhoto.name = "myAppleTxt" + i;
 		                        move.getChildByName("myAppleTxt" + i).addEventListener("click", scalePhoto);
 		                    }
@@ -5873,7 +5900,105 @@ if (reversed == null) { reversed = false; }
 		            }
 				
 		
+				
+				
+				
+				//טווין מרים תפוח מעל לבלנדר, , ממרכז, מחכה, מוריד
+				//תפוח נכון
+				function AppelUpAndDownTrue(){
+					var target=cont1.getChildByName("myApple" + choosenApple);
+					var targetOX=	cont1.getChildByName("myApple" + choosenApple).x;		
+					var blanderPlace=cont2.getChildByName("myBasket").x;
+					var YPlace= 300;
+					
+					createjs.Tween.get(target).to({
+		                   x:blanderPlace,
+							y:YPlace					                   
+		                }			
+					, 500).wait(400).to({		
+						scale: 1.13,					
+		                },
+					100)
+					.wait(100).to({		
+						scale: 1,	
+		                },
+					100)
+					.wait(100).to({		
+						scale: 1.13,					
+		                },
+					100)
+					.wait(100).to({		
+						scale: 1,	
+		                },
+					100)
+					.wait(100).to({		
+						scale: 0.7,	
+						y:YPlace+90, 				
+						x:blanderPlace+50,				
+						rotation:-360	
+		                },
+					900).to({				
+						y:YPlace+200, 			
+						x:blanderPlace+50,
+						scale: 0.5,			
+		                },
+					900);						
+		            }
+					
+				//תפוח שגוי
+				function AppelUpAndDownFalse(){
+					var target=cont1.getChildByName("myApple" + choosenApple);
+					var targetOX=	cont1.getChildByName("myApple" + choosenApple).x;	
+					var blanderPlace=cont2.getChildByName("myBasket").x;
+					var YPlace= 300;
+					
+				 	createjs.Tween.get(target).to({
+		                  x:blanderPlace,
+							y:YPlace					                   
+		                }
+					, 500).wait(400).to({				
+						y:YPlace-70, 
+						x:blanderPlace+300	,
+						scale: 0.7	,
+						rotation:120					
+		                },
+					200).to({				
+						y:YPlace+700, 
+						x:blanderPlace+400,
+						scale: 0.3	,
+						rotation:210				
+		                }, 
+					800).to({		
+						x:targetOX,
+						rotation:0,	
+						scale: 1,			
+		                }, 
+						10);					
+		            }
+				
+				//לא פגע ושגוי
+				function AppelUpAndDownFalse2(){
+					var target=cont1.getChildByName("myApple" + choosenApple);		
+					var targetOX=	cont1.getChildByName("myApple" + choosenApple).x;				
+					var YPlace= 300;
+					
+					createjs.Tween.get(target).to({                  
+							y:YPlace					                   
+		                }
+					, 500).wait(400).to({		
+							y:YPlace+600, 			
+		                },
+					400).to({		
+						x:targetOX,				
+		                }, 10);				
+		            }
+				
 		
+				
+				
+				
+				
+				
 		
 		            //האוור לכפתורים
 		            function enterButtonHover(evt) {               
@@ -5941,14 +6066,14 @@ lib.properties = {
 	color: "#FFFFFF",
 	opacity: 1.00,
 	manifest: [
-		{src:"images/wintSecoundSemester_atlas_1.png?1657479880516", id:"wintSecoundSemester_atlas_1"},
-		{src:"images/wintSecoundSemester_atlas_2.png?1657479880516", id:"wintSecoundSemester_atlas_2"},
-		{src:"images/wintSecoundSemester_atlas_3.png?1657479880516", id:"wintSecoundSemester_atlas_3"},
-		{src:"https://code.jquery.com/jquery-3.4.1.min.js?1657479880778", id:"lib/jquery-3.4.1.min.js"},
-		{src:"components/sdk/anwidget.js?1657479880778", id:"sdk/anwidget.js"},
-		{src:"components/ui/src/textinput.js?1657479880778", id:"an.TextInput"},
-		{src:"components/ui/src/combobox.js?1657479880778", id:"an.ComboBox"},
-		{src:"components/ui/src/combobox.js?1657479880778", id:"an.ComboBox"}
+		{src:"images/wintSecoundSemester_atlas_1.png?1657561625328", id:"wintSecoundSemester_atlas_1"},
+		{src:"images/wintSecoundSemester_atlas_2.png?1657561625328", id:"wintSecoundSemester_atlas_2"},
+		{src:"images/wintSecoundSemester_atlas_3.png?1657561625329", id:"wintSecoundSemester_atlas_3"},
+		{src:"https://code.jquery.com/jquery-3.4.1.min.js?1657561625664", id:"lib/jquery-3.4.1.min.js"},
+		{src:"components/sdk/anwidget.js?1657561625664", id:"sdk/anwidget.js"},
+		{src:"components/ui/src/textinput.js?1657561625664", id:"an.TextInput"},
+		{src:"components/ui/src/combobox.js?1657561625664", id:"an.ComboBox"},
+		{src:"components/ui/src/combobox.js?1657561625664", id:"an.ComboBox"}
 	],
 	preloads: []
 };
