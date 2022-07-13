@@ -4151,6 +4151,7 @@ if (reversed == null) { reversed = false; }
 		            var longSound;
 		            var goodSound;
 		            var badSound;
+					var openSound;
 		
 		            //משתנים למסך סיום
 		            var worngAnsCount = 0;            
@@ -4314,12 +4315,13 @@ if (reversed == null) { reversed = false; }
 		
 		            //מפעיל את הפונקצייה בעת טעינת פרוייקט		
 					//לא למחולל			
-		            //CreatopenScreen();
+		            CreatopenScreen();
 					///למחולל
 					//CreatopenScreen1();
 					
-					// init_sound();        
-		CreateSum();
+					init_sound(); 
+		//סיום			
+		//CreateSum();
 		
 		            ////-----נסטיה עד פה הערה
 		
@@ -4467,7 +4469,7 @@ if (reversed == null) { reversed = false; }
 		                ClearOpenScreen();
 		                creatBackStory();
 		                //הפעלת סאונד רקע
-		                longSound = createjs.Sound.play("gameSound");
+		                //longSound = createjs.Sound.play("gameSound");
 		                longSound.loop = true;
 		            }
 		
@@ -4677,6 +4679,10 @@ if (reversed == null) { reversed = false; }
 					myTimeout = setTimeout(StartOpenAnimation, 700);	
 					myTimeout = setTimeout(ChangeOpenScreen, 1853);	
 		
+					//סאונד
+					if (isMuted == false) {
+		                            openSound= createjs.Sound.play("storySound");
+		                        }
 		            }
 		
 				//פונקציות אנימנציות מסך פתיחה
@@ -4693,6 +4699,12 @@ if (reversed == null) { reversed = false; }
 		                clearBackStory();
 		                CreatGameBoard();
 		                creatQbigScreen();
+						   //הפעלת סאונד רקע
+						openSound= createjs.Sound.muted("storySound");
+		if (isMuted == false) {
+		                           longSound = createjs.Sound.play("gameSound");
+		                        }
+		                
 		            }
 		
 		
@@ -5516,7 +5528,7 @@ if (reversed == null) { reversed = false; }
 		                if (AllTheContent[GameNum][0][2] != "text") {
 		                    QTxt.lineWidth = 500;
 		
-		                /*    var QphotoSmall = new AllTheContent[GameNum][0][3]();
+		                   var QphotoSmall = new AllTheContent[GameNum][0][3]();
 		                    cont.addChild(QphotoSmall);
 		                    QphotoSmall.x = 160;
 		                    QphotoSmall.y = 120;
@@ -5524,7 +5536,7 @@ if (reversed == null) { reversed = false; }
 		                    QphotoSmall.name = "QphotoSmall";
 		                    QTxt.font = "20px Gisha";
 		                    QTxt.lineHeight = 23;
-		                    cont.getChildByName("QphotoSmall").addEventListener("click", scalePhoto);*/
+		                    cont.getChildByName("QphotoSmall").addEventListener("click", scalePhoto);
 		
 		                }
 		
@@ -5628,6 +5640,11 @@ if (reversed == null) { reversed = false; }
 						myTimeout = setTimeout(startEndAnimation, 1333);
 						myTimeout = setTimeout(startEndAnimation, 2666);	
 						myTimeout = setTimeout(startEndAnimation, 3999);
+						//סאונד
+						if (isMuted == false) {
+							 longSound.muted = true;
+		                            goodSound = createjs.Sound.play("endSound");
+		                        }
 					
 					//טקסט
 					   var storyTxt = new createjs.Text();
@@ -5642,13 +5659,24 @@ if (reversed == null) { reversed = false; }
 		                storyTxt.text = "הידד! כל הכבוד, תפסתם את כל התפוחים ועכשיו יש לי הרבה מיץ טעים";
 		                storyTxt.name = "storyTxt";
 					
-					
+					//מחיקת אנימציה
+								myTimeout = setTimeout(clearEndAnimation, 5000);
 		            }
 				
 				//הפעלת אנימציית סיום
 				function startEndAnimation(){
 					cont.getChildByName("endAnimation").gotoAndPlay(2)
 				}
+			
+			//מחיקת אנימציית סיום
+			function clearEndAnimation(){
+				if (isMuted == false) {
+							 longSound.muted = false;                    
+		                        }
+							 cont.removeChild(cont.getChildByName("wide_popup"));
+							 cont.removeChild(cont.getChildByName("storyTxt"));
+							 cont.removeChild(cont.getChildByName("endAnimation"));						
+			}
 		
 		            //מפה כל הגלילה
 		            //יצירת גלילה
@@ -6146,6 +6174,8 @@ if (reversed == null) { reversed = false; }
 		                createjs.Sound.registerSound("https://alumappel.github.io/powerOfKnowledge/long.mp3", "gameSound");
 		                createjs.Sound.registerSound("https://alumappel.github.io/powerOfKnowledge/worngwav.mp3", "worngSound");
 		                createjs.Sound.registerSound("https://alumappel.github.io/powerOfKnowledge/correctwav.mp3", "rightSound");
+						 createjs.Sound.registerSound("https://alumappel.github.io/powerOfKnowledge/open.wav", "storySound");
+						 createjs.Sound.registerSound("https://alumappel.github.io/powerOfKnowledge/end.wav", "endSound");
 		            }
 		
 		
@@ -6193,15 +6223,15 @@ lib.properties = {
 	color: "#FFFFFF",
 	opacity: 1.00,
 	manifest: [
-		{src:"images/wintSecoundSemester_atlas_1.png?1657739769418", id:"wintSecoundSemester_atlas_1"},
-		{src:"images/wintSecoundSemester_atlas_2.png?1657739769419", id:"wintSecoundSemester_atlas_2"},
-		{src:"images/wintSecoundSemester_atlas_3.png?1657739769419", id:"wintSecoundSemester_atlas_3"},
-		{src:"images/wintSecoundSemester_atlas_4.png?1657739769419", id:"wintSecoundSemester_atlas_4"},
-		{src:"https://code.jquery.com/jquery-3.4.1.min.js?1657739769638", id:"lib/jquery-3.4.1.min.js"},
-		{src:"components/sdk/anwidget.js?1657739769638", id:"sdk/anwidget.js"},
-		{src:"components/ui/src/textinput.js?1657739769638", id:"an.TextInput"},
-		{src:"components/ui/src/combobox.js?1657739769638", id:"an.ComboBox"},
-		{src:"components/ui/src/combobox.js?1657739769638", id:"an.ComboBox"}
+		{src:"images/wintSecoundSemester_atlas_1.png?1657741589877", id:"wintSecoundSemester_atlas_1"},
+		{src:"images/wintSecoundSemester_atlas_2.png?1657741589878", id:"wintSecoundSemester_atlas_2"},
+		{src:"images/wintSecoundSemester_atlas_3.png?1657741589878", id:"wintSecoundSemester_atlas_3"},
+		{src:"images/wintSecoundSemester_atlas_4.png?1657741589878", id:"wintSecoundSemester_atlas_4"},
+		{src:"https://code.jquery.com/jquery-3.4.1.min.js?1657741590114", id:"lib/jquery-3.4.1.min.js"},
+		{src:"components/sdk/anwidget.js?1657741590114", id:"sdk/anwidget.js"},
+		{src:"components/ui/src/textinput.js?1657741590114", id:"an.TextInput"},
+		{src:"components/ui/src/combobox.js?1657741590114", id:"an.ComboBox"},
+		{src:"components/ui/src/combobox.js?1657741590114", id:"an.ComboBox"}
 	],
 	preloads: []
 };
