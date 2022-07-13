@@ -3,7 +3,7 @@
 var p; // shortcut to reference prototypes
 var lib={};var ss={};var img={};
 lib.ssMetadata = [
-		{name:"wintSecoundSemester_atlas_1", frames: [[869,785,220,116],[236,785,146,200],[0,489,220,208],[627,489,162,200],[869,903,220,116],[0,730,1220,53],[900,0,463,728],[1637,170,273,256],[1637,428,273,256],[791,489,92,116],[791,607,92,116],[1091,785,92,116],[1091,1002,188,61],[693,1021,188,61],[547,785,161,164],[710,785,157,165],[384,785,161,165],[1589,483,38,41],[1589,526,32,37],[1589,565,32,37],[222,489,189,238],[547,951,144,139],[1912,170,116,270],[1912,442,116,270],[1365,665,116,270],[1483,665,116,270],[1601,686,116,270],[1719,686,116,270],[1837,714,116,270],[1222,730,116,270],[0,785,116,270],[118,785,116,270],[1589,604,32,32],[1601,638,32,32],[1365,170,270,265],[1365,437,222,226],[413,489,212,212],[1365,0,654,168],[1955,714,50,50],[0,0,898,487],[2030,0,18,326],[2030,328,18,45],[1340,937,245,82],[1587,958,224,74],[236,987,205,57],[1813,986,224,74],[1091,903,95,62],[443,952,95,62],[693,952,95,62],[443,1016,95,62],[627,691,32,32],[1589,437,44,44],[661,691,29,29]]},
+		{name:"wintSecoundSemester_atlas_1", frames: [[1340,879,220,116],[472,785,146,200],[284,489,220,208],[697,489,162,200],[620,952,220,116],[0,730,1220,53],[900,0,463,728],[1637,170,273,256],[1637,428,273,256],[1933,714,92,116],[1105,785,92,116],[1933,832,92,116],[1610,1042,188,61],[0,1057,188,61],[783,785,161,164],[946,785,157,165],[620,785,161,165],[1589,483,38,41],[861,489,32,37],[1589,526,32,37],[0,489,282,214],[842,952,187,116],[506,489,189,238],[1031,952,144,139],[1912,170,116,270],[1912,442,116,270],[1579,686,116,270],[1697,686,116,270],[1815,714,116,270],[1222,730,116,270],[0,785,116,270],[118,785,116,270],[236,785,116,270],[354,785,116,270],[861,528,32,32],[861,562,32,32],[1365,170,270,265],[1365,437,222,226],[1365,665,212,212],[1365,0,654,168],[384,1057,50,50],[0,0,898,487],[2030,0,18,326],[2030,328,18,45],[1562,958,245,82],[1809,986,224,74],[1403,1042,205,57],[1177,1002,224,74],[472,987,95,62],[472,1051,95,62],[190,1057,95,62],[287,1057,95,62],[1589,565,32,32],[1589,437,44,44],[861,596,29,29]]},
 		{name:"wintSecoundSemester_atlas_2", frames: [[0,0,1280,720],[0,722,1280,720],[0,1444,1280,417]]},
 		{name:"wintSecoundSemester_atlas_3", frames: [[0,723,1280,720],[0,0,1280,721]]},
 		{name:"wintSecoundSemester_atlas_4", frames: [[0,0,1280,721],[0,723,1280,721]]}
@@ -198,6 +198,20 @@ lib.ssMetadata = [
 
 
 
+(lib.Artboard108 = function() {
+	this.initialize(ss["wintSecoundSemester_atlas_1"]);
+	this.gotoAndStop(20);
+}).prototype = p = new cjs.Sprite();
+
+
+
+(lib.Artboard109 = function() {
+	this.initialize(ss["wintSecoundSemester_atlas_1"]);
+	this.gotoAndStop(21);
+}).prototype = p = new cjs.Sprite();
+
+
+
 (lib.backgrund_MV_1 = function() {
 	this.initialize(ss["wintSecoundSemester_atlas_4"]);
 	this.gotoAndStop(1);
@@ -214,217 +228,217 @@ lib.ssMetadata = [
 
 (lib.blender = function() {
 	this.initialize(ss["wintSecoundSemester_atlas_1"]);
-	this.gotoAndStop(20);
+	this.gotoAndStop(22);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.blender1 = function() {
 	this.initialize(ss["wintSecoundSemester_atlas_1"]);
-	this.gotoAndStop(21);
+	this.gotoAndStop(23);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.bottel_MV_0 = function() {
 	this.initialize(ss["wintSecoundSemester_atlas_1"]);
-	this.gotoAndStop(22);
+	this.gotoAndStop(24);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.bottel_MV_1 = function() {
 	this.initialize(ss["wintSecoundSemester_atlas_1"]);
-	this.gotoAndStop(23);
+	this.gotoAndStop(25);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.bottel_MV_2 = function() {
 	this.initialize(ss["wintSecoundSemester_atlas_1"]);
-	this.gotoAndStop(24);
+	this.gotoAndStop(26);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.bottel_MV_3 = function() {
 	this.initialize(ss["wintSecoundSemester_atlas_1"]);
-	this.gotoAndStop(25);
+	this.gotoAndStop(27);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.bottel_MV_4 = function() {
 	this.initialize(ss["wintSecoundSemester_atlas_1"]);
-	this.gotoAndStop(26);
+	this.gotoAndStop(28);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.bottel_MV_5 = function() {
 	this.initialize(ss["wintSecoundSemester_atlas_1"]);
-	this.gotoAndStop(27);
+	this.gotoAndStop(29);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.bottel_MV_6 = function() {
 	this.initialize(ss["wintSecoundSemester_atlas_1"]);
-	this.gotoAndStop(28);
+	this.gotoAndStop(30);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.bottel_MV_7 = function() {
 	this.initialize(ss["wintSecoundSemester_atlas_1"]);
-	this.gotoAndStop(29);
+	this.gotoAndStop(31);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.bottel_MV_8 = function() {
 	this.initialize(ss["wintSecoundSemester_atlas_1"]);
-	this.gotoAndStop(30);
+	this.gotoAndStop(32);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.bottel_MV_9 = function() {
 	this.initialize(ss["wintSecoundSemester_atlas_1"]);
-	this.gotoAndStop(31);
+	this.gotoAndStop(33);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.ComboBox = function() {
 	this.initialize(ss["wintSecoundSemester_atlas_1"]);
-	this.gotoAndStop(32);
+	this.gotoAndStop(34);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.ComboBox_1 = function() {
 	this.initialize(ss["wintSecoundSemester_atlas_1"]);
-	this.gotoAndStop(33);
+	this.gotoAndStop(35);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.CTA_button_hover = function() {
 	this.initialize(ss["wintSecoundSemester_atlas_1"]);
-	this.gotoAndStop(34);
+	this.gotoAndStop(36);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.CTA_button_normal = function() {
 	this.initialize(ss["wintSecoundSemester_atlas_1"]);
-	this.gotoAndStop(35);
+	this.gotoAndStop(37);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.CTA_button_unable = function() {
 	this.initialize(ss["wintSecoundSemester_atlas_1"]);
-	this.gotoAndStop(36);
+	this.gotoAndStop(38);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.end_Q_space = function() {
 	this.initialize(ss["wintSecoundSemester_atlas_1"]);
-	this.gotoAndStop(37);
+	this.gotoAndStop(39);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.icy_tawer_v2_anser_worng_sy = function() {
 	this.initialize(ss["wintSecoundSemester_atlas_1"]);
-	this.gotoAndStop(38);
+	this.gotoAndStop(40);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.popup_1 = function() {
 	this.initialize(ss["wintSecoundSemester_atlas_1"]);
-	this.gotoAndStop(39);
+	this.gotoAndStop(41);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.scrool_line = function() {
 	this.initialize(ss["wintSecoundSemester_atlas_1"]);
-	this.gotoAndStop(40);
+	this.gotoAndStop(42);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.scrool_thomb = function() {
 	this.initialize(ss["wintSecoundSemester_atlas_1"]);
-	this.gotoAndStop(41);
+	this.gotoAndStop(43);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.Secendry_button_hover = function() {
 	this.initialize(ss["wintSecoundSemester_atlas_1"]);
-	this.gotoAndStop(42);
+	this.gotoAndStop(44);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.Secendry_button_normal = function() {
 	this.initialize(ss["wintSecoundSemester_atlas_1"]);
-	this.gotoAndStop(43);
+	this.gotoAndStop(45);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.Secendry_button_unable = function() {
 	this.initialize(ss["wintSecoundSemester_atlas_1"]);
-	this.gotoAndStop(44);
+	this.gotoAndStop(46);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.secendry_sy_no_shadow = function() {
 	this.initialize(ss["wintSecoundSemester_atlas_1"]);
-	this.gotoAndStop(45);
+	this.gotoAndStop(47);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.sound_button_mute = function() {
 	this.initialize(ss["wintSecoundSemester_atlas_1"]);
-	this.gotoAndStop(46);
+	this.gotoAndStop(48);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.sound_button_unmute = function() {
 	this.initialize(ss["wintSecoundSemester_atlas_1"]);
-	this.gotoAndStop(47);
+	this.gotoAndStop(49);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.Stop_button_hover = function() {
 	this.initialize(ss["wintSecoundSemester_atlas_1"]);
-	this.gotoAndStop(48);
+	this.gotoAndStop(50);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.Stop_button_normal = function() {
 	this.initialize(ss["wintSecoundSemester_atlas_1"]);
-	this.gotoAndStop(49);
+	this.gotoAndStop(51);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.TextInput = function() {
 	this.initialize(ss["wintSecoundSemester_atlas_1"]);
-	this.gotoAndStop(50);
+	this.gotoAndStop(52);
 }).prototype = p = new cjs.Sprite();
 
 
@@ -438,14 +452,14 @@ lib.ssMetadata = [
 
 (lib.X_button_normal = function() {
 	this.initialize(ss["wintSecoundSemester_atlas_1"]);
-	this.gotoAndStop(51);
+	this.gotoAndStop(53);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.zoom_button_normal = function() {
 	this.initialize(ss["wintSecoundSemester_atlas_1"]);
-	this.gotoAndStop(52);
+	this.gotoAndStop(54);
 }).prototype = p = new cjs.Sprite();
 // helper functions:
 
@@ -561,6 +575,27 @@ if (reversed == null) { reversed = false; }
 
 }).prototype = p = new cjs.MovieClip();
 p.nominalBounds = new cjs.Rectangle(0,0,898,487);
+
+
+(lib.Symbol1 = function(mode,startPosition,loop,reversed) {
+if (loop == null) { loop = true; }
+if (reversed == null) { reversed = false; }
+	var props = new Object();
+	props.mode = mode;
+	props.startPosition = startPosition;
+	props.labels = {};
+	props.loop = loop;
+	props.reversed = reversed;
+	cjs.MovieClip.apply(this,[props]);
+
+	// Layer_1
+	this.instance = new lib.Artboard109();
+
+	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
+
+	this._renderFirstFrame();
+
+}).prototype = getMCSymbolPrototype(lib.Symbol1, new cjs.Rectangle(0,0,187,116), null);
 
 
 (lib.stopBtn = function(mode,startPosition,loop,reversed) {
@@ -3552,6 +3587,45 @@ if (reversed == null) { reversed = false; }
 p.nominalBounds = new cjs.Rectangle(0,-284.9,273,540.9);
 
 
+(lib.endAnimation = function(mode,startPosition,loop,reversed) {
+if (loop == null) { loop = true; }
+if (reversed == null) { reversed = false; }
+	var props = new Object();
+	props.mode = mode;
+	props.startPosition = startPosition;
+	props.labels = {};
+	props.loop = loop;
+	props.reversed = reversed;
+	cjs.MovieClip.apply(this,[props]);
+
+	// timeline functions:
+	this.frame_1 = function() {
+		this.stop();
+	}
+	this.frame_39 = function() {
+		this.stop();
+	}
+
+	// actions tween:
+	this.timeline.addTween(cjs.Tween.get(this).wait(1).call(this.frame_1).wait(38).call(this.frame_39).wait(1));
+
+	// Layer_2
+	this.instance = new lib.Symbol1();
+	this.instance.setTransform(93.5,150,1,1,0,0,0,93.5,58);
+
+	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1).to({rotation:-1.6187,y:147.4},0).wait(1).to({rotation:-3.2375,y:144.8},0).wait(1).to({rotation:-4.8562,x:93.4,y:142.25},0).wait(1).to({rotation:-6.4749,x:93.45,y:139.65},0).wait(1).to({rotation:-8.0937,x:93.35,y:137.05},0).wait(1).to({rotation:-9.7124,y:134.5},0).wait(1).to({rotation:-11.3312,y:131.9},0).wait(1).to({rotation:-12.9499,x:93.3,y:129.3},0).wait(1).to({rotation:-14.5686,y:126.75},0).wait(1).to({rotation:-16.1874,x:93.25,y:124.15},0).wait(1).to({rotation:-17.8061,y:121.55},0).wait(1).to({rotation:-19.4248,y:119},0).wait(1).to({rotation:-21.0436,x:93.2,y:116.45},0).wait(1).to({rotation:-22.6623,y:113.85},0).wait(1).to({rotation:-24.2811,x:93.15,y:111.25},0).wait(1).to({rotation:-25.8998,x:93.1,y:108.65},0).wait(1).to({rotation:-27.5185,x:93.05,y:106.1},0).wait(1).to({rotation:-29.1373,y:103.5},0).wait(1).to({rotation:-30.756,x:93,y:100.95},0).wait(1).to({rotation:-29.256,x:93.05,y:103.35},0).wait(1).to({rotation:-27.756,x:93.15,y:105.8},0).wait(1).to({rotation:-26.256,x:93.2,y:108.2},0).wait(1).to({rotation:-24.756,x:93.25,y:110.6},0).wait(1).to({rotation:-23.256,x:93.3,y:113.1},0).wait(1).to({rotation:-21.7561,x:93.4,y:115.5},0).wait(1).to({rotation:-20.2561,x:93.45,y:117.95},0).wait(1).to({rotation:-18.7561,x:93.5,y:120.35},0).wait(1).to({rotation:-17.2561,x:93.55,y:122.75},0).wait(1).to({rotation:-15.7561,x:93.65,y:125.15},0).wait(1).to({rotation:-14.2561,x:93.7,y:127.65},0).wait(1).to({rotation:-12.7561,x:93.75,y:130.05},0).wait(1).to({rotation:-11.2561,x:93.8,y:132.5},0).wait(1).to({rotation:-9.7561,x:93.9,y:134.9},0).wait(1).to({rotation:-8.2561,x:93.95,y:137.3},0).wait(1).to({rotation:-6.7562,y:139.75},0).wait(1).to({rotation:-5.2562,x:94,y:142.2},0).wait(1).to({rotation:-3.7562,x:94.1,y:144.65},0).wait(1).to({rotation:-2.2562,x:94.2,y:147},0).wait(1).to({rotation:-0.7562,y:149.45},0).wait(1));
+
+	// Layer_1
+	this.instance_1 = new lib.Artboard108();
+
+	this.timeline.addTween(cjs.Tween.get(this.instance_1).wait(40));
+
+	this._renderFirstFrame();
+
+}).prototype = p = new cjs.MovieClip();
+p.nominalBounds = new cjs.Rectangle(-17,0,299,214);
+
+
 (lib.comboNew = function(mode,startPosition,loop,reversed) {
 if (loop == null) { loop = true; }
 if (reversed == null) { reversed = false; }
@@ -4065,33 +4139,7 @@ if (reversed == null) { reversed = false; }
 		if(this.totalFrames == 1) {
 			this.isSingleFrame = true;
 		}
-		////סטוריבורד פתיח
-		            //var backgrund = new lib.BackgroundMain();
-		            //	stage.addChild(backgrund);
-		            //	backgrund.name = "MainBackground";
-		            //	backgrund.x = 0;
-		            //	backgrund.y = 0;
-		            //	stage.getChildByName("MainBackground").gotoAndStop(1)
-		
-		
-		            //var AppleDown= new lib.AppleDown();
-		            //	stage.addChild(AppleDown);
-		            //	AppleDown.name = "AppleDown";
-		            //	AppleDown.x = 200;
-		            //	AppleDown.y = 210;
-		
-		
-		
-		
-		            ////stage.getChildByName("AppleDown").gotoAndStop(1)
-		
-		
-		
-		
-		
-		
-		
-		            //משתנים גלובליים
+		//משתנים גלובליים
 		            //משתנה ששומר את המשחק המדובר לפי המערך
 		            var GameNum = 0;
 		            var self = this;
@@ -4266,12 +4314,12 @@ if (reversed == null) { reversed = false; }
 		
 		            //מפעיל את הפונקצייה בעת טעינת פרוייקט		
 					//לא למחולל			
-		            CreatopenScreen();
+		            //CreatopenScreen();
 					///למחולל
 					//CreatopenScreen1();
 					
-					 init_sound();        
-		
+					// init_sound();        
+		CreateSum();
 		
 		            ////-----נסטיה עד פה הערה
 		
@@ -4658,7 +4706,7 @@ if (reversed == null) { reversed = false; }
 		                cont.removeChild(cont.getChildByName("startButton"));
 		                cont.removeChild(cont.getChildByName("startGameTxt"));
 		                cont.removeChild(cont.getChildByName("muteButton"));
-		
+						cont.removeChild(cont.getChildByName( "AppleDown"));
 		            }
 		
 		
@@ -5316,7 +5364,7 @@ if (reversed == null) { reversed = false; }
 		            //השהייה כפוייה
 		            function checkNotPlayed() {
 		                timeNotPlayed++;
-		                if (timeNotPlayed >= 3.69/speedNum*5 && isPaused == false) {
+		                if (timeNotPlayed >= 4.69/speedNum*5 && isPaused == false) {
 		                    pauseGame();
 		                }
 		            }
@@ -5468,7 +5516,7 @@ if (reversed == null) { reversed = false; }
 		                if (AllTheContent[GameNum][0][2] != "text") {
 		                    QTxt.lineWidth = 500;
 		
-		                    var QphotoSmall = new AllTheContent[GameNum][0][3]();
+		                /*    var QphotoSmall = new AllTheContent[GameNum][0][3]();
 		                    cont.addChild(QphotoSmall);
 		                    QphotoSmall.x = 160;
 		                    QphotoSmall.y = 120;
@@ -5476,7 +5524,7 @@ if (reversed == null) { reversed = false; }
 		                    QphotoSmall.name = "QphotoSmall";
 		                    QTxt.font = "20px Gisha";
 		                    QTxt.lineHeight = 23;
-		                    cont.getChildByName("QphotoSmall").addEventListener("click", scalePhoto);
+		                    cont.getChildByName("QphotoSmall").addEventListener("click", scalePhoto);*/
 		
 		                }
 		
@@ -5561,8 +5609,46 @@ if (reversed == null) { reversed = false; }
 		                varTxt.text = "למסך הראשי";
 		                varTxt.name = "toTheStartTxt";
 		
-		
+					//אנימציה
+					//חלונית
+		                var wide_popup = new lib.widePopup();
+		                cont.addChild(wide_popup);
+		                wide_popup.x = 50;
+		                wide_popup.y = 150;
+		                wide_popup.name = "wide_popup";
+						
+						//דמות
+						    var endAnimation = new lib.endAnimation();
+		                cont.addChild(endAnimation);
+		                endAnimation.x = 200;
+		                endAnimation.y = 260;
+		                endAnimation.name = "endAnimation";
+						
+						
+						myTimeout = setTimeout(startEndAnimation, 1333);
+						myTimeout = setTimeout(startEndAnimation, 2666);	
+						myTimeout = setTimeout(startEndAnimation, 3999);
+					
+					//טקסט
+					   var storyTxt = new createjs.Text();
+		                cont.addChild(storyTxt);
+		                storyTxt.color = "#291A08";
+		                storyTxt.font = "30px Gisha";
+		                storyTxt.x = 1110;
+		                storyTxt.y = 290;
+		                storyTxt.textAlign = "right";
+		                storyTxt.lineHeight = 30;
+		                storyTxt.lineWidth = 500;
+		                storyTxt.text = "הידד! כל הכבוד, תפסתם את כל התפוחים ועכשיו יש לי הרבה מיץ טעים";
+		                storyTxt.name = "storyTxt";
+					
+					
 		            }
+				
+				//הפעלת אנימציית סיום
+				function startEndAnimation(){
+					cont.getChildByName("endAnimation").gotoAndPlay(2)
+				}
 		
 		            //מפה כל הגלילה
 		            //יצירת גלילה
@@ -6107,15 +6193,15 @@ lib.properties = {
 	color: "#FFFFFF",
 	opacity: 1.00,
 	manifest: [
-		{src:"images/wintSecoundSemester_atlas_1.png?1657737828998", id:"wintSecoundSemester_atlas_1"},
-		{src:"images/wintSecoundSemester_atlas_2.png?1657737828998", id:"wintSecoundSemester_atlas_2"},
-		{src:"images/wintSecoundSemester_atlas_3.png?1657737828998", id:"wintSecoundSemester_atlas_3"},
-		{src:"images/wintSecoundSemester_atlas_4.png?1657737828998", id:"wintSecoundSemester_atlas_4"},
-		{src:"https://code.jquery.com/jquery-3.4.1.min.js?1657737829258", id:"lib/jquery-3.4.1.min.js"},
-		{src:"components/sdk/anwidget.js?1657737829258", id:"sdk/anwidget.js"},
-		{src:"components/ui/src/textinput.js?1657737829258", id:"an.TextInput"},
-		{src:"components/ui/src/combobox.js?1657737829258", id:"an.ComboBox"},
-		{src:"components/ui/src/combobox.js?1657737829258", id:"an.ComboBox"}
+		{src:"images/wintSecoundSemester_atlas_1.png?1657739769418", id:"wintSecoundSemester_atlas_1"},
+		{src:"images/wintSecoundSemester_atlas_2.png?1657739769419", id:"wintSecoundSemester_atlas_2"},
+		{src:"images/wintSecoundSemester_atlas_3.png?1657739769419", id:"wintSecoundSemester_atlas_3"},
+		{src:"images/wintSecoundSemester_atlas_4.png?1657739769419", id:"wintSecoundSemester_atlas_4"},
+		{src:"https://code.jquery.com/jquery-3.4.1.min.js?1657739769638", id:"lib/jquery-3.4.1.min.js"},
+		{src:"components/sdk/anwidget.js?1657739769638", id:"sdk/anwidget.js"},
+		{src:"components/ui/src/textinput.js?1657739769638", id:"an.TextInput"},
+		{src:"components/ui/src/combobox.js?1657739769638", id:"an.ComboBox"},
+		{src:"components/ui/src/combobox.js?1657739769638", id:"an.ComboBox"}
 	],
 	preloads: []
 };
